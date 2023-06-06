@@ -1,0 +1,2280 @@
+{
+  "font_size": 0.4,
+  "font_color": "#FFFFFF",
+  "background_alpha": 0.5,
+  "background_color": "#9C27B0",
+  "Stroke": "none",
+  "body": [
+    {
+      "from": 0.92,
+      "to": 3.12,
+      "location": 2,
+      "content": "\u003ci\u003eHere at Sekitomo High School,\u003c/i\u003e"
+    },
+    {
+      "from": 3.16,
+      "to": 6.548,
+      "location": 2,
+      "content": "\u003ci\u003ethe girls are free to choose\nto wear either a ribbon or a necktie,\u003c/i\u003e"
+    },
+    {
+      "from": 6.5600000000000005,
+      "to": 8.348,
+      "location": 2,
+      "content": "\u003ci\u003ebut for girls in lower castes,\u003c/i\u003e"
+    },
+    {
+      "from": 8.36,
+      "to": 12.32,
+      "location": 2,
+      "content": "\u003ci\u003eit's an unspoken rule that they\naren't allowed to wear neckties.\u003c/i\u003e"
+    },
+    {
+      "from": 13,
+      "to": 19,
+      "location": 2,
+      "content": "\u003ci\u003eFor my assignment, Hinami told me\nwho to talk to and what to talk about.\u003c/i\u003e"
+    },
+    {
+      "from": 19.72,
+      "to": 22.52,
+      "location": 2,
+      "content": "\u003ci\u003eBoth of them wear neckties.\u003c/i\u003e"
+    },
+    {
+      "from": 23.04,
+      "to": 26.668,
+      "location": 2,
+      "content": "The first one sits next to you: Yuzu Izumi."
+    },
+    {
+      "from": 26.68,
+      "to": 30.08,
+      "location": 2,
+      "content": "The second one will be next to you\nin home ec: Minami Nanami."
+    },
+    {
+      "from": 30.64,
+      "to": 33.04,
+      "location": 2,
+      "content": "The third one, you find for yourself."
+    },
+    {
+      "from": 33.64,
+      "to": 36,
+      "location": 2,
+      "content": "As for what you'll talk about..."
+    },
+    {
+      "from": 40.92,
+      "to": 43.4,
+      "location": 2,
+      "content": "E–Excuse me, Izumi–san, sorry..."
+    },
+    { "from": 44.04, "to": 45.548, "location": 2, "content": "Huh? What?" },
+    { "from": 45.56, "to": 47.12, "location": 2, "content": "U–Um..." },
+    {
+      "from": 47.16,
+      "to": 48.708,
+      "location": 2,
+      "content": "Do you have any tissues?"
+    },
+    {
+      "from": 48.72,
+      "to": 50.988,
+      "location": 2,
+      "content": "I caught a cold, but forgot to bring some."
+    },
+    { "from": 51, "to": 53.04, "location": 2, "content": "Oh, sure. One sec." },
+    {
+      "from": 54.8,
+      "to": 58.228,
+      "location": 2,
+      "content": "To talk to someone\nyou've never talked to before,"
+    },
+    {
+      "from": 58.24,
+      "to": 60.588,
+      "location": 2,
+      "content": "you need a simple topic to start with."
+    },
+    {
+      "from": 60.6,
+      "to": 62.868,
+      "location": 2,
+      "content": "You'll be wearing a mask.\nSay you have cold."
+    },
+    {
+      "from": 62.88,
+      "to": 64.56,
+      "location": 2,
+      "content": "It's the perfect topic."
+    },
+    {
+      "from": 65.04,
+      "to": 67.788,
+      "location": 2,
+      "content": "Oh, sorry, I don't have any."
+    },
+    {
+      "from": 67.8,
+      "to": 69.92,
+      "location": 2,
+      "content": "O–Oh, no, it's okay."
+    },
+    {
+      "from": 70.96,
+      "to": 73.28,
+      "location": 2,
+      "content": "Hey, Kikuchi–san, do you have any tissues?"
+    },
+    { "from": 73.32, "to": 74.8, "location": 2, "content": "I do." },
+    { "from": 75.12, "to": 76.28, "location": 2, "content": "Here you are." },
+    { "from": 77.6, "to": 78.24, "location": 2, "content": "Here." },
+    { "from": 78.72, "to": 80.6, "location": 2, "content": "Th–Thank you." },
+    {
+      "from": 81.12,
+      "to": 83.468,
+      "location": 2,
+      "content": "Erika! That eyeshadow you said they killed!"
+    },
+    { "from": 83.48, "to": 84.84, "location": 2, "content": "Um..." },
+    { "from": 86, "to": 87.12, "location": 2, "content": "Thank you." },
+    { "from": 87.48, "to": 88.468, "location": 2, "content": "Sure." },
+    {
+      "from": 88.48,
+      "to": 90.32,
+      "location": 2,
+      "content": "\u003ci\u003eThis is Fuka Kikuchi.\u003c/i\u003e"
+    },
+    {
+      "from": 90.72,
+      "to": 93.64,
+      "location": 2,
+      "content": "\u003ci\u003eDoes this count as talking to her?\u003c/i\u003e"
+    },
+    {
+      "from": 97.48,
+      "to": 98.868,
+      "location": 2,
+      "content": "Tomozaki–kun..."
+    },
+    { "from": 98.88, "to": 99.788, "location": 2, "content": "Wh–What?" },
+    {
+      "from": 99.8,
+      "to": 103.228,
+      "location": 2,
+      "content": "Um... Why are you smiling?"
+    },
+    {
+      "from": 103.24,
+      "to": 105.2,
+      "location": 2,
+      "content": "N–No, um, my teeth hurt too!"
+    },
+    {
+      "from": 105.24,
+      "to": 106.76,
+      "location": 2,
+      "content": "This makes them kind of better!"
+    },
+    { "from": 107.88, "to": 109.52, "location": 2, "content": "Oh, really?" },
+    { "from": 109.56, "to": 110.828, "location": 2, "content": "Poke! Poke!" },
+    { "from": 110.84, "to": 111.56, "location": 2, "content": "Poke!" },
+    {
+      "from": 124.48,
+      "to": 132.68,
+      "location": 2,
+      "content": "\"Bottom–tier Character Tomozaki\""
+    },
+    {
+      "from": 204.56,
+      "to": 208.92,
+      "location": 2,
+      "content": "\"Lv. 2 – It Feels Great When You Level Up\nMultiple Times from One Battle\""
+    },
+    {
+      "from": 209.24,
+      "to": 211.388,
+      "location": 2,
+      "content": "One more thing."
+    },
+    {
+      "from": 211.4,
+      "to": 215.6,
+      "location": 2,
+      "content": "When you talk to them, make sure I'm nearby."
+    },
+    {
+      "from": 215.64,
+      "to": 217.468,
+      "location": 2,
+      "content": "Just in case anything happens."
+    },
+    {
+      "from": 217.48,
+      "to": 219.8,
+      "location": 2,
+      "content": "\u003ci\u003eNext, Minami Nanami–san.\u003c/i\u003e"
+    },
+    {
+      "from": 220.48,
+      "to": 223.468,
+      "location": 2,
+      "content": "\u003ci\u003eShe's on the track team with Hinami.\u003c/i\u003e"
+    },
+    {
+      "from": 223.48,
+      "to": 225.8,
+      "location": 2,
+      "content": "\u003ci\u003eShe's another major player in the class.\u003c/i\u003e"
+    },
+    {
+      "from": 226.32,
+      "to": 228.32,
+      "location": 2,
+      "content": "\"Home Economics\""
+    },
+    {
+      "from": 229.88,
+      "to": 233.628,
+      "location": 2,
+      "content": "\u003ci\u003eNanami–san's here, but Hinami isn't.\u003c/i\u003e"
+    },
+    {
+      "from": 233.64,
+      "to": 236.668,
+      "location": 2,
+      "content": "\u003ci\u003eThat means I don't need to do anything yet.\u003c/i\u003e"
+    },
+    {
+      "from": 236.68,
+      "to": 237.228,
+      "location": 2,
+      "content": "\u003ci\u003eRight.\u003c/i\u003e"
+    },
+    {
+      "from": 237.24,
+      "to": 241.36,
+      "location": 2,
+      "content": "\u003ci\u003eI'm not cowering in fear,\nI'm just following Hinami's instructions.\u003c/i\u003e"
+    },
+    {
+      "from": 242.36,
+      "to": 244.628,
+      "location": 2,
+      "content": "What's up, Tomozaki–kun? You're here early!"
+    },
+    {
+      "from": 244.64,
+      "to": 245.908,
+      "location": 2,
+      "content": "\u003ci\u003eWhy the heck?!\u003c/i\u003e"
+    },
+    {
+      "from": 245.92,
+      "to": 248.44,
+      "location": 2,
+      "content": "\u003ci\u003eShe talked to me! I can't ignore her!\u003c/i\u003e"
+    },
+    {
+      "from": 248.48,
+      "to": 251.24,
+      "location": 2,
+      "content": "–Hello?\n–\u003ci\u003eIf I told her the real reason I'm early...\u003c/i\u003e"
+    },
+    {
+      "from": 252,
+      "to": 254.24,
+      "location": 2,
+      "content": "To talk to you, Nanami–san!"
+    },
+    { "from": 255.96, "to": 256.948, "location": 2, "content": "Huh?" },
+    {
+      "from": 256.96,
+      "to": 260.268,
+      "location": 2,
+      "content": "\u003ci\u003eShe'll think I'm way too creepy and kill me!\u003c/i\u003e"
+    },
+    {
+      "from": 260.28,
+      "to": 262.52,
+      "location": 2,
+      "content": "–What's wrong? Hello?\n–\u003ci\u003eWhat do I do? What do I say?\u003c/i\u003e"
+    },
+    {
+      "from": 264.12,
+      "to": 266.36,
+      "location": 2,
+      "content": "Nothing... I just... came..."
+    },
+    { "from": 266.8, "to": 268, "location": 2, "content": "Oh, really?" },
+    {
+      "from": 268.04,
+      "to": 270.388,
+      "location": 2,
+      "content": "Well, that's everyone, right?"
+    },
+    {
+      "from": 270.4,
+      "to": 272.788,
+      "location": 2,
+      "content": "\u003ci\u003eWhat do I do now?\u003c/i\u003e"
+    },
+    {
+      "from": 272.8,
+      "to": 276.44,
+      "location": 2,
+      "content": "\u003ci\u003eThe conversation's already started.\nI need to keep it going.\u003c/i\u003e"
+    },
+    {
+      "from": 277.28,
+      "to": 279.36,
+      "location": 2,
+      "content": "But that's amazing."
+    },
+    {
+      "from": 279.8,
+      "to": 281.28,
+      "location": 2,
+      "content": "Huh? What's amazing?"
+    },
+    {
+      "from": 281.6,
+      "to": 283.828,
+      "location": 2,
+      "content": "No, like, \"I just came\"?"
+    },
+    {
+      "from": 283.84,
+      "to": 285.868,
+      "location": 2,
+      "content": "It wasn't very specific or anything,"
+    },
+    {
+      "from": 285.88,
+      "to": 287.868,
+      "location": 2,
+      "content": "but then you said, \"that's everyone.\""
+    },
+    {
+      "from": 287.88,
+      "to": 292.68,
+      "location": 2,
+      "content": "I just thought young girls\nthese days have a lot of empathy."
+    },
+    {
+      "from": 294.32,
+      "to": 296.92,
+      "location": 2,
+      "content": "No... Never mind... Sorry."
+    },
+    {
+      "from": 299.12,
+      "to": 300.908,
+      "location": 2,
+      "content": "What're you saying, Tomozaki–kun?"
+    },
+    {
+      "from": 300.92,
+      "to": 302.48,
+      "location": 2,
+      "content": "Are you a grandpa or something?"
+    },
+    {
+      "from": 303.96,
+      "to": 306.52,
+      "location": 2,
+      "content": "No, I was just saying,\nyoung girls these days–"
+    },
+    {
+      "from": 306.56,
+      "to": 308.72,
+      "location": 2,
+      "content": "No, you're plenty young yourself!"
+    },
+    { "from": 309.52, "to": 311.868, "location": 2, "content": "No, I mean," },
+    {
+      "from": 311.88,
+      "to": 316.588,
+      "location": 2,
+      "content": "you know how high school girls these days\nuse the word \"bad\" to describe everything?"
+    },
+    {
+      "from": 316.6,
+      "to": 320.228,
+      "location": 2,
+      "content": "I meant it in that sense, how girls\nhave the empathy to understand–"
+    },
+    {
+      "from": 320.24,
+      "to": 324.28,
+      "location": 2,
+      "content": "Stop! Stop talking like\none of those experts on TV!"
+    },
+    {
+      "from": 324.32,
+      "to": 325.788,
+      "location": 2,
+      "content": "Minmi, what's up?"
+    },
+    { "from": 325.8, "to": 327.44, "location": 2, "content": "Oh, Tama!" },
+    {
+      "from": 328.16,
+      "to": 329.988,
+      "location": 2,
+      "content": "You're as small as ever!"
+    },
+    {
+      "from": 330,
+      "to": 333.068,
+      "location": 2,
+      "content": "I don't need that! Answer the question!"
+    },
+    {
+      "from": 333.08,
+      "to": 336.028,
+      "location": 2,
+      "content": "Well, Tomozaki–kun's acting\nlike an old guy, and..."
+    },
+    {
+      "from": 336.04,
+      "to": 337.748,
+      "location": 2,
+      "content": "Hm... What was it?"
+    },
+    {
+      "from": 337.76,
+      "to": 339.04,
+      "location": 2,
+      "content": "I don't know. Pass."
+    },
+    {
+      "from": 339.48,
+      "to": 342.508,
+      "location": 2,
+      "content": "You there. Um... omozaki, right?"
+    },
+    { "from": 342.52, "to": 343.628, "location": 2, "content": "You explain." },
+    { "from": 343.64, "to": 344.188, "location": 2, "content": "Huh?" },
+    {
+      "from": 344.2,
+      "to": 345.548,
+      "location": 2,
+      "content": "You can do it, Tomozaki–kun!"
+    },
+    { "from": 345.56, "to": 347.428, "location": 2, "content": "I can do it?" },
+    { "from": 347.44, "to": 348.92, "location": 2, "content": "U–Uh... Well–" },
+    {
+      "from": 348.96,
+      "to": 350.548,
+      "location": 2,
+      "content": "What's so funny?"
+    },
+    {
+      "from": 350.56,
+      "to": 354.548,
+      "location": 2,
+      "content": "Oh? Hey, Nakamu! Tomozaki–kun's really funny!"
+    },
+    { "from": 354.56, "to": 356.72, "location": 2, "content": "Oh? Tomozaki?" },
+    { "from": 358.08, "to": 359.108, "location": 2, "content": "What? What?" },
+    {
+      "from": 359.12,
+      "to": 360.6,
+      "location": 2,
+      "content": "What's going on, Tomozaki?"
+    },
+    {
+      "from": 360.64,
+      "to": 362.308,
+      "location": 2,
+      "content": "No, it's just..."
+    },
+    {
+      "from": 362.32,
+      "to": 365.2,
+      "location": 2,
+      "content": "Nanami–san said I was here early,"
+    },
+    {
+      "from": 365.52,
+      "to": 367.268,
+      "location": 2,
+      "content": "and I answered that I just came,"
+    },
+    {
+      "from": 367.28,
+      "to": 369.028,
+      "location": 2,
+      "content": "then she responded that \"that's everyone.\""
+    },
+    {
+      "from": 369.04,
+      "to": 373.708,
+      "location": 2,
+      "content": "So I was just saying that girls these\ndays have a lot of empathy,"
+    },
+    {
+      "from": 373.72,
+      "to": 375.36,
+      "location": 2,
+      "content": "and Nanami–san started laughing."
+    },
+    {
+      "from": 376.2,
+      "to": 377.748,
+      "location": 2,
+      "content": "Yeah, yeah, yeah!"
+    },
+    { "from": 377.76, "to": 378.56, "location": 2, "content": "So?" },
+    { "from": 379.2, "to": 380.148, "location": 2, "content": "That's it?" },
+    { "from": 380.16, "to": 381.64, "location": 2, "content": "Yeah, it is." },
+    {
+      "from": 382.16,
+      "to": 384.308,
+      "location": 2,
+      "content": "That's not funny at all."
+    },
+    {
+      "from": 384.32,
+      "to": 386.628,
+      "location": 2,
+      "content": "Yeah, it's not."
+    },
+    {
+      "from": 386.64,
+      "to": 390.04,
+      "location": 2,
+      "content": "Oh? You just have no sense of humor."
+    },
+    {
+      "from": 390.08,
+      "to": 392.148,
+      "location": 2,
+      "content": "No, yours is just weird, Mimimi."
+    },
+    {
+      "from": 392.16,
+      "to": 394.348,
+      "location": 2,
+      "content": "What?! Nakamu, that's mean!"
+    },
+    {
+      "from": 394.36,
+      "to": 396.388,
+      "location": 2,
+      "content": "What's so weird about me?!"
+    },
+    {
+      "from": 396.4,
+      "to": 398.108,
+      "location": 2,
+      "content": "Hey, Nakamu, tell me!"
+    },
+    {
+      "from": 398.12,
+      "to": 399.788,
+      "location": 2,
+      "content": "Then do we take a vote?"
+    },
+    {
+      "from": 399.8,
+      "to": 402.508,
+      "location": 2,
+      "content": "Who thinks Mimimi's weird?"
+    },
+    { "from": 402.52, "to": 403.708, "location": 2, "content": "Me!" },
+    {
+      "from": 403.72,
+      "to": 405.228,
+      "location": 2,
+      "content": "Three votes for weird."
+    },
+    {
+      "from": 405.24,
+      "to": 407.228,
+      "location": 2,
+      "content": "Then who thinks I'm weird?"
+    },
+    { "from": 407.24, "to": 407.788, "location": 2, "content": "Me!" },
+    { "from": 407.8, "to": 409.44, "location": 2, "content": "Me! Me! Me!" },
+    {
+      "from": 409.48,
+      "to": 412.988,
+      "location": 2,
+      "content": "–\u003ci\u003eNatsubayashi–san's acting strange.\u003c/i\u003e\n–Me! Me! Me! Me! Me!"
+    },
+    {
+      "from": 413,
+      "to": 415.76,
+      "location": 2,
+      "content": "\u003ci\u003eWhat is it? What's going on?\u003c/i\u003e"
+    },
+    {
+      "from": 416.4,
+      "to": 417.708,
+      "location": 2,
+      "content": "\u003ci\u003eI don't know why,\u003c/i\u003e"
+    },
+    {
+      "from": 417.72,
+      "to": 421.28,
+      "location": 2,
+      "content": "\u003ci\u003ebut it'll be awkward if Natsubayashi–san\nis the only one who doesn't raise hers.\u003c/i\u003e"
+    },
+    {
+      "from": 421.64,
+      "to": 423.96,
+      "location": 2,
+      "content": "\u003ci\u003eI'll keep mine down.\u003c/i\u003e"
+    },
+    { "from": 424.52, "to": 425.52, "location": 2, "content": "Me!" },
+    {
+      "from": 426.32,
+      "to": 428.44,
+      "location": 2,
+      "content": "I'll put a vote on this side too."
+    },
+    {
+      "from": 428.88,
+      "to": 431.308,
+      "location": 2,
+      "content": "Hold up, Aoi, you're not in this."
+    },
+    {
+      "from": 431.32,
+      "to": 434.388,
+      "location": 2,
+      "content": "What? I was listening, so why not?"
+    },
+    { "from": 434.4, "to": 435.84, "location": 2, "content": "And Shuji..." },
+    {
+      "from": 435.88,
+      "to": 439.52,
+      "location": 2,
+      "content": "You lost to Tomozaki–kun in Attack Fams."
+    },
+    {
+      "from": 445.2,
+      "to": 449.828,
+      "location": 2,
+      "content": "Don't take it out on him here.\nIt's not very manly!"
+    },
+    {
+      "from": 449.84,
+      "to": 452.788,
+      "location": 2,
+      "content": "That's why Shimano–senpai dumped you."
+    },
+    {
+      "from": 452.8,
+      "to": 456.52,
+      "location": 2,
+      "content": "\"Younger boys just\naren't reliable,\" remember?"
+    },
+    {
+      "from": 458.88,
+      "to": 460.04,
+      "location": 2,
+      "content": "Sounds just like her!"
+    },
+    { "from": 460.08, "to": 461.108, "location": 2, "content": "Hey!" },
+    { "from": 461.12, "to": 462, "location": 2, "content": "Quit it, stupid!" },
+    {
+      "from": 468.48,
+      "to": 471.548,
+      "location": 2,
+      "content": "Okay, so Mimimi and me make two votes."
+    },
+    { "from": 471.56, "to": 472.468, "location": 2, "content": "Who else?" },
+    {
+      "from": 472.48,
+      "to": 474.388,
+      "location": 2,
+      "content": "I'll put mine here too."
+    },
+    { "from": 474.4, "to": 476.36, "location": 2, "content": "Hey, no fair!" },
+    {
+      "from": 477.52,
+      "to": 479.388,
+      "location": 2,
+      "content": "Oh! A vote from Tama too!"
+    },
+    {
+      "from": 479.4,
+      "to": 481.348,
+      "location": 2,
+      "content": "Okay, that's four."
+    },
+    {
+      "from": 481.36,
+      "to": 483.028,
+      "location": 2,
+      "content": "So Shuji has no sense of humor."
+    },
+    {
+      "from": 483.04,
+      "to": 484.388,
+      "location": 2,
+      "content": "Nice try, Nakamu!"
+    },
+    {
+      "from": 484.4,
+      "to": 487.76,
+      "location": 2,
+      "content": "Darn. Well, a vote's a vote."
+    },
+    {
+      "from": 487.8,
+      "to": 492.308,
+      "location": 2,
+      "content": "Then let's get an Attack Fams\nrematch against Tomozaki–kun."
+    },
+    { "from": 492.32, "to": 493.92, "location": 2, "content": "I know that!" },
+    {
+      "from": 494.6,
+      "to": 496.388,
+      "location": 2,
+      "content": "You just wait, Tomozaki!"
+    },
+    { "from": 496.4, "to": 498.188, "location": 2, "content": "S–Sure." },
+    {
+      "from": 498.2,
+      "to": 499.8,
+      "location": 2,
+      "content": "Any time you want."
+    },
+    {
+      "from": 504.44,
+      "to": 506.4,
+      "location": 2,
+      "content": "Thanks so much, Aoi!"
+    },
+    {
+      "from": 506.76,
+      "to": 508.04,
+      "location": 2,
+      "content": "You were so cool!"
+    },
+    {
+      "from": 509,
+      "to": 510.948,
+      "location": 2,
+      "content": "Don't worry about it, Hanabi."
+    },
+    {
+      "from": 510.96,
+      "to": 514.08,
+      "location": 2,
+      "content": "I nearly ruined the mood again."
+    },
+    {
+      "from": 514.88,
+      "to": 517.068,
+      "location": 2,
+      "content": "It always shows on your face."
+    },
+    {
+      "from": 517.08,
+      "to": 521,
+      "location": 2,
+      "content": "Nice try, Tama! You did good!"
+    },
+    {
+      "from": 524,
+      "to": 525.76,
+      "location": 2,
+      "content": "Wait, Minmi, don't–"
+    },
+    { "from": 526.96, "to": 528.108, "location": 2, "content": "H–Hey!" },
+    {
+      "from": 528.12,
+      "to": 530.36,
+      "location": 2,
+      "content": "–Oh? You like it here?\n–\u003ci\u003eWh–What's going on?\u003c/i\u003e"
+    },
+    {
+      "from": 530.72,
+      "to": 533.308,
+      "location": 2,
+      "content": "Come on, Mimimi, quit it."
+    },
+    {
+      "from": 533.32,
+      "to": 536.468,
+      "location": 2,
+      "content": "Oh? Aoi, you sure you want me to?"
+    },
+    { "from": 536.48, "to": 537.48, "location": 2, "content": "Got you!" },
+    { "from": 537.96, "to": 539.72, "location": 2, "content": "H–Hey!" },
+    { "from": 540.48, "to": 542.188, "location": 2, "content": "Well? Well?" },
+    {
+      "from": 542.2,
+      "to": 546.56,
+      "location": 2,
+      "content": "You're really sensitive here, aren't you?"
+    },
+    {
+      "from": 547.12,
+      "to": 549.56,
+      "location": 2,
+      "content": "Q–Quit it, Mimimi!"
+    },
+    {
+      "from": 550.48,
+      "to": 552.48,
+      "location": 2,
+      "content": "\u003ci\u003eHuh? Huh? Huh? Huh?!\u003c/i\u003e"
+    },
+    { "from": 558.24, "to": 559.72, "location": 2, "content": "Done now?" },
+    {
+      "from": 560.96,
+      "to": 562.788,
+      "location": 2,
+      "content": "I can't beat you."
+    },
+    {
+      "from": 562.8,
+      "to": 565.708,
+      "location": 2,
+      "content": "That's it! No more sexual harassment."
+    },
+    {
+      "from": 565.72,
+      "to": 568.348,
+      "location": 2,
+      "content": "You sure do love Aoi."
+    },
+    {
+      "from": 568.36,
+      "to": 569.96,
+      "location": 2,
+      "content": "That's not the problem."
+    },
+    {
+      "from": 570.52,
+      "to": 574.148,
+      "location": 2,
+      "content": "But thanks for earlier, Minmi."
+    },
+    {
+      "from": 574.16,
+      "to": 578.4,
+      "location": 2,
+      "content": "What do you mean? You can be\na tough mama to understand sometimes."
+    },
+    { "from": 579.96, "to": 581.68, "location": 2, "content": "Get it? Tama?" },
+    {
+      "from": 581.72,
+      "to": 585.16,
+      "location": 2,
+      "content": "It wasn't a good one.\nJust accept my gratitude."
+    },
+    { "from": 585.64, "to": 586.668, "location": 2, "content": "U–Um..." },
+    { "from": 586.68, "to": 588.268, "location": 2, "content": "Hinami–san?" },
+    { "from": 588.28, "to": 589.068, "location": 2, "content": "Hm?" },
+    {
+      "from": 589.08,
+      "to": 592.428,
+      "location": 2,
+      "content": "You saved me earlier too. Thank you."
+    },
+    {
+      "from": 592.44,
+      "to": 593.76,
+      "location": 2,
+      "content": "Don't worry about it."
+    },
+    {
+      "from": 594.08,
+      "to": 596.96,
+      "location": 2,
+      "content": "You're funnier than I thought\nyou were, Tomozaki–kun."
+    },
+    {
+      "from": 597,
+      "to": 599.148,
+      "location": 2,
+      "content": "I was laughing behind you the whole time."
+    },
+    {
+      "from": 599.16,
+      "to": 601.6,
+      "location": 2,
+      "content": "He was like one of those\nexperts on TV, right?"
+    },
+    {
+      "from": 604.08,
+      "to": 606.12,
+      "location": 2,
+      "content": "Nanami–san, it's not that funny."
+    },
+    {
+      "from": 606.16,
+      "to": 607.668,
+      "location": 2,
+      "content": "Sorry, sorry!"
+    },
+    {
+      "from": 607.68,
+      "to": 609.628,
+      "location": 2,
+      "content": "And just call me Mimimi."
+    },
+    { "from": 609.64, "to": 610.8, "location": 2, "content": "Huh?" },
+    {
+      "from": 610.84,
+      "to": 614.84,
+      "location": 2,
+      "content": "Only the teachers call you\nNanami–san these days."
+    },
+    {
+      "from": 614.88,
+      "to": 616.32,
+      "location": 2,
+      "content": "What about you, Hanabi?"
+    },
+    {
+      "from": 616.64,
+      "to": 617.788,
+      "location": 2,
+      "content": "I don't really care."
+    },
+    { "from": 617.8, "to": 619.788, "location": 2, "content": "Then, Tama?" },
+    {
+      "from": 619.8,
+      "to": 622.76,
+      "location": 2,
+      "content": "Um... Why \"Tama\"?"
+    },
+    {
+      "from": 622.8,
+      "to": 624.96,
+      "location": 2,
+      "content": "You're Hanabi Natsubayashi, right?"
+    },
+    {
+      "from": 625.84,
+      "to": 629.388,
+      "location": 2,
+      "content": "Oh, you know? \"Hanabi\" means\n\"fireworks,\" so you go \"Tamaya!\""
+    },
+    { "from": 629.4, "to": 630.308, "location": 2, "content": "So Tama!" },
+    {
+      "from": 630.32,
+      "to": 632.2,
+      "location": 2,
+      "content": "And because it's cute!"
+    },
+    {
+      "from": 632.24,
+      "to": 634.548,
+      "location": 2,
+      "content": "Yeah, yeah. Tama's good."
+    },
+    { "from": 634.56, "to": 635.44, "location": 2, "content": "Tama!" },
+    {
+      "from": 635.48,
+      "to": 637.56,
+      "location": 2,
+      "content": "Don't play with people's names!"
+    },
+    {
+      "from": 640.28,
+      "to": 642.708,
+      "location": 2,
+      "content": "\"Second Sewing Room\"\nWhy I made fun of Nakamura?"
+    },
+    {
+      "from": 642.72,
+      "to": 644.948,
+      "location": 2,
+      "content": "I'd need to do that eventually anyway."
+    },
+    {
+      "from": 644.96,
+      "to": 646.308,
+      "location": 2,
+      "content": "You'd need to?"
+    },
+    {
+      "from": 646.32,
+      "to": 650.988,
+      "location": 2,
+      "content": "Nakamura has a grudge against you\nfor beating him at Attack Fams."
+    },
+    {
+      "from": 651,
+      "to": 653.228,
+      "location": 2,
+      "content": "It's so heavy that people won't bring it up."
+    },
+    {
+      "from": 653.24,
+      "to": 655.508,
+      "location": 2,
+      "content": "He's a major player in the class,"
+    },
+    {
+      "from": 655.52,
+      "to": 659.6,
+      "location": 2,
+      "content": "so if he's angry at you,\nyour position won't be stable."
+    },
+    {
+      "from": 659.88,
+      "to": 662.6,
+      "location": 2,
+      "content": "That's bad if you want to be a normie."
+    },
+    {
+      "from": 662.64,
+      "to": 666.96,
+      "location": 2,
+      "content": "So we needed to make his emotions\nexplode as soon as possible."
+    },
+    { "from": 667.48, "to": 668.6, "location": 2, "content": "Explode?" },
+    {
+      "from": 668.64,
+      "to": 673.708,
+      "location": 2,
+      "content": "Yes. Say it in front of everyone\nand turn it into a joke."
+    },
+    {
+      "from": 673.72,
+      "to": 676.388,
+      "location": 2,
+      "content": "You say it like it's easy, but it's not."
+    },
+    {
+      "from": 676.4,
+      "to": 679.508,
+      "location": 2,
+      "content": "Well, no one else could've done it."
+    },
+    {
+      "from": 679.52,
+      "to": 681.388,
+      "location": 2,
+      "content": "They don't have the courage."
+    },
+    {
+      "from": 681.4,
+      "to": 683.68,
+      "location": 2,
+      "content": "\u003ci\u003eThis girl is scaring me.\u003c/i\u003e"
+    },
+    {
+      "from": 683.96,
+      "to": 687.36,
+      "location": 2,
+      "content": "A–Anyway, you saved me. Thanks."
+    },
+    { "from": 687.4, "to": 688.708, "location": 2, "content": "It's fine." },
+    {
+      "from": 688.72,
+      "to": 690.868,
+      "location": 2,
+      "content": "Anything else you felt today?"
+    },
+    {
+      "from": 690.88,
+      "to": 694.2,
+      "location": 2,
+      "content": "Just that I'm really bad at talking."
+    },
+    {
+      "from": 694.24,
+      "to": 696.868,
+      "location": 2,
+      "content": "Like, I can't say anything\nsmart or thoughtful."
+    },
+    {
+      "from": 696.88,
+      "to": 700.388,
+      "location": 2,
+      "content": "But you were pretty good in the home ec room."
+    },
+    {
+      "from": 700.4,
+      "to": 704.36,
+      "location": 2,
+      "content": "For a first attempt, your mission\ntoday was a complete success."
+    },
+    { "from": 704.64, "to": 705.44, "location": 2, "content": "Really?!" },
+    {
+      "from": 705.76,
+      "to": 708.388,
+      "location": 2,
+      "content": "But you were a complete\nfailure the rest of the day."
+    },
+    {
+      "from": 708.4,
+      "to": 711.628,
+      "location": 2,
+      "content": "You showed Kikuchi–san that you\nwere smiling under your mask,"
+    },
+    {
+      "from": 711.64,
+      "to": 714.668,
+      "location": 2,
+      "content": "and you didn't turn away when\nyou were blowing your nose."
+    },
+    {
+      "from": 714.68,
+      "to": 716.468,
+      "location": 2,
+      "content": "That was so unbearably bad!"
+    },
+    {
+      "from": 716.48,
+      "to": 718.96,
+      "location": 2,
+      "content": "You failed so hard,\nhow unepic it was was epic!"
+    },
+    {
+      "from": 719.32,
+      "to": 722.48,
+      "location": 2,
+      "content": "\u003ci\u003eHinami–san, the difference between\nyour compliments and insults is intense.\u003c/i\u003e"
+    },
+    {
+      "from": 722.52,
+      "to": 725,
+      "location": 2,
+      "content": "Anything else you're curious\nabout apart from that?"
+    },
+    { "from": 725.64, "to": 726.948, "location": 2, "content": "Well, yeah." },
+    {
+      "from": 726.96,
+      "to": 729.44,
+      "location": 2,
+      "content": "About that thing with Tama–chan..."
+    },
+    {
+      "from": 729.48,
+      "to": 731.948,
+      "location": 2,
+      "content": "She was acting a bit weird."
+    },
+    {
+      "from": 731.96,
+      "to": 736.148,
+      "location": 2,
+      "content": "Oh, she's a stubborn\ngirl–or should I say honest?"
+    },
+    {
+      "from": 736.16,
+      "to": 739.708,
+      "location": 2,
+      "content": "She doesn't follow the mood or the situation."
+    },
+    {
+      "from": 739.72,
+      "to": 743.12,
+      "location": 2,
+      "content": "Mimimi and me love her for it,"
+    },
+    {
+      "from": 743.16,
+      "to": 749.68,
+      "location": 2,
+      "content": "but she's a bad match with someone like\nNakamura who uses the mood to communicate,"
+    },
+    {
+      "from": 750.08,
+      "to": 752.708,
+      "location": 2,
+      "content": "so they've fought a few times over it."
+    },
+    {
+      "from": 752.72,
+      "to": 754.948,
+      "location": 2,
+      "content": "Nakamura doesn't mean any harm,"
+    },
+    {
+      "from": 754.96,
+      "to": 758.388,
+      "location": 2,
+      "content": "but he does want to make her\nplay the game at least once."
+    },
+    {
+      "from": 758.4,
+      "to": 760.92,
+      "location": 2,
+      "content": "Oh, that sounds like a pain."
+    },
+    {
+      "from": 760.96,
+      "to": 764.748,
+      "location": 2,
+      "content": "I wish Mimimi and I could stay\nwith her all the time,"
+    },
+    {
+      "from": 764.76,
+      "to": 767.24,
+      "location": 2,
+      "content": "but we can't, so it's a problem."
+    },
+    {
+      "from": 767.88,
+      "to": 770.2,
+      "location": 2,
+      "content": "All right. I think that's enough for today."
+    },
+    {
+      "from": 770.72,
+      "to": 774.32,
+      "location": 2,
+      "content": "We'll be working on your\nposture tomorrow, so be ready."
+    },
+    {
+      "from": 774.96,
+      "to": 776.96,
+      "location": 2,
+      "content": "\"Bottom–tier Character Tomozaki\""
+    },
+    {
+      "from": 780.48,
+      "to": 782.948,
+      "location": 2,
+      "content": "\"Today's Assignment: Posture\"\nThe mind and body are connected."
+    },
+    {
+      "from": 782.96,
+      "to": 786.148,
+      "location": 2,
+      "content": "When your posture is good,\nyou'll feel less timid."
+    },
+    { "from": 786.16, "to": 787.64, "location": 2, "content": "L–Like this?" },
+    { "from": 788.36, "to": 790.08, "location": 2, "content": "Yeah. Good." },
+    { "from": 792.88, "to": 794.2, "location": 2, "content": "Wh–What?!" },
+    {
+      "from": 794.56,
+      "to": 796.148,
+      "location": 2,
+      "content": "I'm checking your muscles."
+    },
+    {
+      "from": 796.16,
+      "to": 798.72,
+      "location": 2,
+      "content": "I'm just touching your butt.\nDon't make a ruckus."
+    },
+    {
+      "from": 799.36,
+      "to": 801.228,
+      "location": 2,
+      "content": "Now come off the wall."
+    },
+    { "from": 801.24, "to": 802.708, "location": 2, "content": "O–Okay." },
+    {
+      "from": 802.72,
+      "to": 804.72,
+      "location": 2,
+      "content": "This is kind of tough to keep."
+    },
+    {
+      "from": 805.12,
+      "to": 808.188,
+      "location": 2,
+      "content": "Because you're using muscles\nyou don't usually use."
+    },
+    {
+      "from": 808.2,
+      "to": 810.948,
+      "location": 2,
+      "content": "From now on, whenever\nyou stand, it'll be like this."
+    },
+    {
+      "from": 810.96,
+      "to": 812.44,
+      "location": 2,
+      "content": "Whenever I stand?"
+    },
+    {
+      "from": 812.8,
+      "to": 815.028,
+      "location": 2,
+      "content": "You can take off the mask."
+    },
+    {
+      "from": 815.04,
+      "to": 816.708,
+      "location": 2,
+      "content": "But keep practicing that smile."
+    },
+    {
+      "from": 816.72,
+      "to": 819.388,
+      "location": 2,
+      "content": "\"Today's Assignment: Posture\"\nAnd in addition to today's assignment,"
+    },
+    {
+      "from": 819.4,
+      "to": 823.84,
+      "location": 2,
+      "content": "you'll be joining me and\ntalking to Mimimi and Hanabi"
+    },
+    {
+      "from": 824.24,
+      "to": 827.6,
+      "location": 2,
+      "content": "and any boys that I'm friends with."
+    },
+    {
+      "from": 827.64,
+      "to": 830.16,
+      "location": 2,
+      "content": "\"Join conversations (this week)\"\nYou'll be doing that all week."
+    },
+    {
+      "from": 830.48,
+      "to": 832.948,
+      "location": 2,
+      "content": "You're saying it like it's easy again."
+    },
+    { "from": 832.96, "to": 834.56, "location": 2, "content": "Hey! Posture!" },
+    {
+      "from": 837.24,
+      "to": 839.76,
+      "location": 2,
+      "content": "And your medium goal."
+    },
+    {
+      "from": 840.24,
+      "to": 844.188,
+      "location": 2,
+      "content": "Get a girlfriend before my third year, right?"
+    },
+    {
+      "from": 844.2,
+      "to": 846.24,
+      "location": 2,
+      "content": "It's building the groundwork for that."
+    },
+    {
+      "from": 846.52,
+      "to": 850.868,
+      "location": 2,
+      "content": "Watch the girls reactions when you talk to\nthem and pay attention to the mood."
+    },
+    {
+      "from": 850.88,
+      "to": 853.068,
+      "location": 2,
+      "content": "I want to set your direction based on that."
+    },
+    {
+      "from": 853.08,
+      "to": 857.44,
+      "location": 2,
+      "content": "Who you'll be friends with and\nwhat you need to practice."
+    },
+    {
+      "from": 857.48,
+      "to": 859.628,
+      "location": 2,
+      "content": "You're thinking that far ahead?"
+    },
+    {
+      "from": 859.64,
+      "to": 862.868,
+      "location": 2,
+      "content": "Of course. When you fight a boss in a game,"
+    },
+    {
+      "from": 862.88,
+      "to": 867.868,
+      "location": 2,
+      "content": "you need to know if their skills\nand your level match up, right?"
+    },
+    {
+      "from": 867.88,
+      "to": 872.88,
+      "location": 2,
+      "content": "Yeah. Whenever you make\na game metaphor, I have to agree."
+    },
+    {
+      "from": 873.44,
+      "to": 877.988,
+      "location": 2,
+      "content": "Today, we're going home with Hashiguchi–kun,\nMatsumoto–kun, and Mimimi."
+    },
+    {
+      "from": 878,
+      "to": 879.84,
+      "location": 2,
+      "content": "Remember to participate in the conversation."
+    },
+    {
+      "from": 879.88,
+      "to": 881.748,
+      "location": 2,
+      "content": "You're still strength training?"
+    },
+    { "from": 881.76, "to": 882.64, "location": 2, "content": "You bet!" },
+    {
+      "from": 882.96,
+      "to": 885.188,
+      "location": 2,
+      "content": "You're doing it outside club too?"
+    },
+    {
+      "from": 885.2,
+      "to": 886.708,
+      "location": 2,
+      "content": "What are you working on?"
+    },
+    {
+      "from": 886.72,
+      "to": 888.36,
+      "location": 2,
+      "content": "My whole body, you know!"
+    },
+    {
+      "from": 888.4,
+      "to": 891.988,
+      "location": 2,
+      "content": "Th–Then are you building\nyour butt muscles too?"
+    },
+    { "from": 892, "to": 892.72, "location": 2, "content": "Huh?" },
+    { "from": 893.16, "to": 894.36, "location": 2, "content": "Butt?" },
+    {
+      "from": 896.08,
+      "to": 898.308,
+      "location": 2,
+      "content": "Oh! I work out my butt too!"
+    },
+    { "from": 898.32, "to": 899.388, "location": 2, "content": "You serious?" },
+    {
+      "from": 899.4,
+      "to": 901.188,
+      "location": 2,
+      "content": "You work it out at home?"
+    },
+    {
+      "from": 901.2,
+      "to": 902.708,
+      "location": 2,
+      "content": "Well, a little."
+    },
+    {
+      "from": 902.72,
+      "to": 905.468,
+      "location": 2,
+      "content": "So the secret to Aoi's nice body"
+    },
+    {
+      "from": 905.48,
+      "to": 907.628,
+      "location": 2,
+      "content": "was her butt muscles?"
+    },
+    {
+      "from": 907.64,
+      "to": 909.628,
+      "location": 2,
+      "content": "\"Higashi–Iwatsuki Station\"\nSorry about that!"
+    },
+    {
+      "from": 909.64,
+      "to": 910.908,
+      "location": 2,
+      "content": "You saved me."
+    },
+    {
+      "from": 910.92,
+      "to": 912.588,
+      "location": 2,
+      "content": "Don't worry about it."
+    },
+    {
+      "from": 912.6,
+      "to": 914.828,
+      "location": 2,
+      "content": "But here's something you should know."
+    },
+    {
+      "from": 914.84,
+      "to": 917.708,
+      "location": 2,
+      "content": "You and Mimimi both get off\nat Kita–Yono Station."
+    },
+    { "from": 917.72, "to": 918.32, "location": 2, "content": "What?!" },
+    {
+      "from": 918.88,
+      "to": 921.28,
+      "location": 2,
+      "content": "Don't run away. Do it right, okay?"
+    },
+    {
+      "from": 922.6,
+      "to": 926.04,
+      "location": 2,
+      "content": "Oh, so you get off at Kita–Yono too?"
+    },
+    { "from": 926.08, "to": 927.28, "location": 2, "content": "Y–Yeah." },
+    {
+      "from": 927.92,
+      "to": 929.628,
+      "location": 2,
+      "content": "Hey, no need to be nervous!"
+    },
+    {
+      "from": 929.64,
+      "to": 931.88,
+      "location": 2,
+      "content": "Y–You're always so cheerful, Mimimi."
+    },
+    { "from": 931.92, "to": 933.068, "location": 2, "content": "Right?" },
+    {
+      "from": 933.08,
+      "to": 937.16,
+      "location": 2,
+      "content": "I'm gonna live on cheer\nand smiles alone! That's me!"
+    },
+    {
+      "from": 937.2,
+      "to": 940.6,
+      "location": 2,
+      "content": "That's amazing. It sounds pretty hard."
+    },
+    { "from": 941, "to": 942.508, "location": 2, "content": "Pretty hard?" },
+    {
+      "from": 942.52,
+      "to": 946.548,
+      "location": 2,
+      "content": "I mean, there are times when\nyou can't smile or be cheerful."
+    },
+    {
+      "from": 946.56,
+      "to": 950.96,
+      "location": 2,
+      "content": "When times are hard, you need to smile.\nIf you don't, it'll just get harder."
+    },
+    {
+      "from": 951,
+      "to": 955.068,
+      "location": 2,
+      "content": "Oh, Hinami did say the mind\nand body were connected."
+    },
+    {
+      "from": 955.08,
+      "to": 957.548,
+      "location": 2,
+      "content": "Oh? Sounds like you're friendly with her."
+    },
+    { "from": 957.56, "to": 959.56, "location": 2, "content": "Huh? Oh, no." },
+    {
+      "from": 959.92,
+      "to": 961.868,
+      "location": 2,
+      "content": "I've been a bit curious to know."
+    },
+    { "from": 961.88, "to": 962.56, "location": 2, "content": "Huh?" },
+    {
+      "from": 963.16,
+      "to": 967.148,
+      "location": 2,
+      "content": "So, Mr. Tomozaki, are you in\nan interesting relationship with Aoi?"
+    },
+    {
+      "from": 967.16,
+      "to": 968.708,
+      "location": 2,
+      "content": "I–Interesting?"
+    },
+    {
+      "from": 968.72,
+      "to": 972.16,
+      "location": 2,
+      "content": "You've been making a lot of\nsuspicious eye contact lately."
+    },
+    {
+      "from": 972.2,
+      "to": 973.6,
+      "location": 2,
+      "content": "Is there something going on?"
+    },
+    { "from": 973.64, "to": 974.868, "location": 2, "content": "No way!" },
+    {
+      "from": 974.88,
+      "to": 978.228,
+      "location": 2,
+      "content": "Why would Aoi Hinami want\nanything to do with me?"
+    },
+    {
+      "from": 978.24,
+      "to": 980.628,
+      "location": 2,
+      "content": "Oh. You're right."
+    },
+    {
+      "from": 980.64,
+      "to": 982.8,
+      "location": 2,
+      "content": "That convinced you way too quick."
+    },
+    {
+      "from": 983.32,
+      "to": 986.548,
+      "location": 2,
+      "content": "You're good. You really are\nfunny sometimes, Tomozaki!"
+    },
+    {
+      "from": 986.56,
+      "to": 987.76,
+      "location": 2,
+      "content": "O–Oh, shut up."
+    },
+    {
+      "from": 987.8,
+      "to": 992.708,
+      "location": 2,
+      "content": "Why aren't you fun like this all the time?\nYou're always looking so gloomy."
+    },
+    {
+      "from": 992.72,
+      "to": 994.56,
+      "location": 2,
+      "content": "That's my choice."
+    },
+    {
+      "from": 994.88,
+      "to": 998.36,
+      "location": 2,
+      "content": "I'm okay with not having fun all the time."
+    },
+    {
+      "from": 998.96,
+      "to": 1000.76,
+      "location": 2,
+      "content": "Oh? What do you mean?"
+    },
+    {
+      "from": 1000.8,
+      "to": 1003.068,
+      "location": 2,
+      "content": "No, I mean, like..."
+    },
+    {
+      "from": 1003.08,
+      "to": 1006.628,
+      "location": 2,
+      "content": "Fun isn't always the right answer."
+    },
+    {
+      "from": 1006.64,
+      "to": 1009.188,
+      "location": 2,
+      "content": "For example, I like Attack Fams."
+    },
+    {
+      "from": 1009.2,
+      "to": 1011.28,
+      "location": 2,
+      "content": "Oh, I heard you were super good."
+    },
+    {
+      "from": 1011.64,
+      "to": 1013.028,
+      "location": 2,
+      "content": "So? What about it?"
+    },
+    {
+      "from": 1013.04,
+      "to": 1017.988,
+      "location": 2,
+      "content": "It's like, I'm not playing\nAttack Fams to have fun."
+    },
+    {
+      "from": 1018,
+      "to": 1020.628,
+      "location": 2,
+      "content": "I like Attack Fams,\nso I work really hard at it."
+    },
+    {
+      "from": 1020.64,
+      "to": 1023.868,
+      "location": 2,
+      "content": "It's like, the fun part comes\nwith the hard work."
+    },
+    { "from": 1023.88, "to": 1025.08, "location": 2, "content": "Oh?" },
+    {
+      "from": 1025.12,
+      "to": 1028.68,
+      "location": 2,
+      "content": "I think you're a lot like Tama, Tomozaki."
+    },
+    {
+      "from": 1029.16,
+      "to": 1030.308,
+      "location": 2,
+      "content": "Like Tama–chan?"
+    },
+    {
+      "from": 1030.32,
+      "to": 1034.4,
+      "location": 2,
+      "content": "She's straight as an arrow, or like,\nshe doesn't bend to the breeze."
+    },
+    {
+      "from": 1034.8,
+      "to": 1039.388,
+      "location": 2,
+      "content": "Like, if you're in a situation where bending\nto the mood would make it more fun,"
+    },
+    {
+      "from": 1039.4,
+      "to": 1041.268,
+      "location": 2,
+      "content": "she won't do it unless it's her thing."
+    },
+    {
+      "from": 1041.28,
+      "to": 1042.908,
+      "location": 2,
+      "content": "She's so amazing like that!"
+    },
+    {
+      "from": 1042.92,
+      "to": 1044.148,
+      "location": 2,
+      "content": "I really respect her!"
+    },
+    {
+      "from": 1044.16,
+      "to": 1046.468,
+      "location": 2,
+      "content": "Meanwhile, I only know how to bend."
+    },
+    {
+      "from": 1046.48,
+      "to": 1050.468,
+      "location": 2,
+      "content": "I bend and bend, like, I'm gonna make\neverything fun no matter what!"
+    },
+    {
+      "from": 1050.48,
+      "to": 1052.148,
+      "location": 2,
+      "content": "So, what do you think? Cute?"
+    },
+    {
+      "from": 1052.16,
+      "to": 1053.908,
+      "location": 2,
+      "content": "Th–That's what you mean?"
+    },
+    {
+      "from": 1053.92,
+      "to": 1056.16,
+      "location": 2,
+      "content": "I'm actually a very troubled young maiden."
+    },
+    {
+      "from": 1057.4,
+      "to": 1061.548,
+      "location": 2,
+      "content": "Though my troubles are\nnothing compared to Tama's."
+    },
+    {
+      "from": 1061.56,
+      "to": 1065.04,
+      "location": 2,
+      "content": "That's true. It must be pretty hard for her."
+    },
+    { "from": 1065.44, "to": 1066.348, "location": 2, "content": "Right?" },
+    {
+      "from": 1066.36,
+      "to": 1070.788,
+      "location": 2,
+      "content": "That's why I have to protect her,\nsince I bend all the time!"
+    },
+    {
+      "from": 1070.8,
+      "to": 1073.548,
+      "location": 2,
+      "content": "I see. So you support each other."
+    },
+    {
+      "from": 1073.56,
+      "to": 1075.628,
+      "location": 2,
+      "content": "That's it! We support each other!"
+    },
+    {
+      "from": 1075.64,
+      "to": 1080.4,
+      "location": 2,
+      "content": "Except I guess you could say\nit's more like I support Tama."
+    },
+    {
+      "from": 1081.08,
+      "to": 1082.588,
+      "location": 2,
+      "content": "Oh, I'm going this way."
+    },
+    {
+      "from": 1082.6,
+      "to": 1083.668,
+      "location": 2,
+      "content": "See you tomorrow!"
+    },
+    {
+      "from": 1083.68,
+      "to": 1085.08,
+      "location": 2,
+      "content": "Oh, yeah. See you."
+    },
+    {
+      "from": 1090.24,
+      "to": 1092.188,
+      "location": 2,
+      "content": "Looks like you did pretty well."
+    },
+    {
+      "from": 1092.2,
+      "to": 1096.628,
+      "location": 2,
+      "content": "Well, Mimimi set the conversation\non topics I could talk about."
+    },
+    {
+      "from": 1096.64,
+      "to": 1098.04,
+      "location": 2,
+      "content": "That's true too,"
+    },
+    {
+      "from": 1098.44,
+      "to": 1102.52,
+      "location": 2,
+      "content": "but it seems you're good\nat saying exactly what you think."
+    },
+    {
+      "from": 1102.92,
+      "to": 1104.96,
+      "location": 2,
+      "content": "Isn't that something everyone's good at?"
+    },
+    {
+      "from": 1105.36,
+      "to": 1106.56,
+      "location": 2,
+      "content": "No, not really."
+    },
+    {
+      "from": 1106.96,
+      "to": 1108.44,
+      "location": 2,
+      "content": "Consider Mimimi."
+    },
+    {
+      "from": 1108.48,
+      "to": 1110.548,
+      "location": 2,
+      "content": "She bends to the mood, right?"
+    },
+    {
+      "from": 1110.56,
+      "to": 1113.468,
+      "location": 2,
+      "content": "Do you think she's good\nat saying what she thinks?"
+    },
+    { "from": 1113.48, "to": 1114.228, "location": 2, "content": "Okay!" },
+    { "from": 1114.24, "to": 1115.348, "location": 2, "content": "Oh, I see." },
+    {
+      "from": 1115.36,
+      "to": 1119.108,
+      "location": 2,
+      "content": "Mimimi's good at saying things\nthat match people around her."
+    },
+    {
+      "from": 1119.12,
+      "to": 1120.508,
+      "location": 2,
+      "content": "And then there's Hanabi."
+    },
+    {
+      "from": 1120.52,
+      "to": 1123.708,
+      "location": 2,
+      "content": "–No!\n–She's good at saying what she thinks, right?"
+    },
+    {
+      "from": 1123.72,
+      "to": 1125.12,
+      "location": 2,
+      "content": "Yeah, she is."
+    },
+    {
+      "from": 1125.4,
+      "to": 1129.548,
+      "location": 2,
+      "content": "After talking to lots of different people,\ndid you find anyone else similar to her?"
+    },
+    {
+      "from": 1129.56,
+      "to": 1131.92,
+      "location": 2,
+      "content": "Now that you mention it, no."
+    },
+    { "from": 1132.68, "to": 1133.988, "location": 2, "content": "Oh, I see." },
+    {
+      "from": 1134,
+      "to": 1136.84,
+      "location": 2,
+      "content": "Saying exactly what you think is hard?"
+    },
+    {
+      "from": 1136.88,
+      "to": 1139.948,
+      "location": 2,
+      "content": "So in a sense, that's your weapon."
+    },
+    {
+      "from": 1139.96,
+      "to": 1140.76,
+      "location": 2,
+      "content": "Your talent."
+    },
+    {
+      "from": 1140.8,
+      "to": 1141.96,
+      "location": 2,
+      "content": "Your ultimate move."
+    },
+    {
+      "from": 1142.28,
+      "to": 1145.72,
+      "location": 2,
+      "content": "If you end up in any sort of trouble,\nyou should use it."
+    },
+    { "from": 1146.36, "to": 1147.68, "location": 2, "content": "I see." },
+    {
+      "from": 1148.56,
+      "to": 1151.72,
+      "location": 2,
+      "content": "Anything else you've noticed with\nmore conversation experience?"
+    },
+    {
+      "from": 1152.24,
+      "to": 1154.04,
+      "location": 2,
+      "content": "Well, let's see..."
+    },
+    {
+      "from": 1154.76,
+      "to": 1158.04,
+      "location": 2,
+      "content": "I noticed something like\ndifferent roles in a conversation."
+    },
+    {
+      "from": 1160.08,
+      "to": 1163.44,
+      "location": 2,
+      "content": "Hey, listen to this! In club yesterday..."
+    },
+    {
+      "from": 1163.92,
+      "to": 1166.388,
+      "location": 2,
+      "content": "Mimimi always starts with\n\"Hey, listen to this!\""
+    },
+    {
+      "from": 1166.4,
+      "to": 1169.228,
+      "location": 2,
+      "content": "or \"So, like, yesterday.\""
+    },
+    {
+      "from": 1169.24,
+      "to": 1171.72,
+      "location": 2,
+      "content": "She's in charge of bringing up a new topic."
+    },
+    {
+      "from": 1172.64,
+      "to": 1176.108,
+      "location": 2,
+      "content": "Oh, something like that happened to me too!"
+    },
+    {
+      "from": 1176.12,
+      "to": 1179.308,
+      "location": 2,
+      "content": "Someone else expands on the topic."
+    },
+    {
+      "from": 1179.32,
+      "to": 1183,
+      "location": 2,
+      "content": "In this group, you usually play that role."
+    },
+    {
+      "from": 1183.32,
+      "to": 1187.068,
+      "location": 2,
+      "content": "Everyone in the group\nexpands the conversation,"
+    },
+    {
+      "from": 1187.08,
+      "to": 1190.748,
+      "location": 2,
+      "content": "but the ones bringing up the topic\nare always you or Mimimi."
+    },
+    {
+      "from": 1190.76,
+      "to": 1192.36,
+      "location": 2,
+      "content": "It's always the same people."
+    },
+    {
+      "from": 1192.88,
+      "to": 1196.308,
+      "location": 2,
+      "content": "Which means that getting\nbetter at conversation means"
+    },
+    {
+      "from": 1196.32,
+      "to": 1201.668,
+      "location": 2,
+      "content": "getting better at bringing up topics\nor expanding on topics."
+    },
+    { "from": 1201.68, "to": 1202.8, "location": 2, "content": "Hexactly!" },
+    {
+      "from": 1203.68,
+      "to": 1207.92,
+      "location": 2,
+      "content": "Now you just need to think\nabout how to get better at those."
+    },
+    {
+      "from": 1207.96,
+      "to": 1209.348,
+      "location": 2,
+      "content": "Wait, wait, wait!"
+    },
+    {
+      "from": 1209.36,
+      "to": 1212.04,
+      "location": 2,
+      "content": "I've heard that \"Hexactly!\" thing twice now."
+    },
+    {
+      "from": 1212.08,
+      "to": 1212.96,
+      "location": 2,
+      "content": "What's that about?"
+    },
+    {
+      "from": 1216.04,
+      "to": 1217.4,
+      "location": 2,
+      "content": "\u003ci\u003eShe went silent.\u003c/i\u003e"
+    },
+    {
+      "from": 1218.4,
+      "to": 1221.548,
+      "location": 2,
+      "content": "Well, all right.\nThat's twice now, so I'll tell you."
+    },
+    {
+      "from": 1221.56,
+      "to": 1222.64,
+      "location": 2,
+      "content": "It's a habit of mine."
+    },
+    {
+      "from": 1223.48,
+      "to": 1228.708,
+      "location": 2,
+      "content": "When I was little, it was a line in my\nfavorite retro game, \"Go Shootemup Oinkem.\""
+    },
+    {
+      "from": 1228.72,
+      "to": 1230.988,
+      "location": 2,
+      "content": "It looks like a game\nmade to sell a character,"
+    },
+    {
+      "from": 1231,
+      "to": 1235.668,
+      "location": 2,
+      "content": "but the story is really well written,\non the theme of when it's right to fight."
+    },
+    {
+      "from": 1235.68,
+      "to": 1241.228,
+      "location": 2,
+      "content": "And at the same time, the world stimulates\na kid's imagination with cute characters!"
+    },
+    {
+      "from": 1241.24,
+      "to": 1243.12,
+      "location": 2,
+      "content": "It's an absolute masterpiece!"
+    },
+    {
+      "from": 1243.16,
+      "to": 1244.708,
+      "location": 2,
+      "content": "Exactly right for a hex!"
+    },
+    { "from": 1244.72, "to": 1245.68, "location": 2, "content": "Hexactly!" },
+    {
+      "from": 1245.72,
+      "to": 1247.628,
+      "location": 2,
+      "content": "Oh, Oinkem?"
+    },
+    {
+      "from": 1247.64,
+      "to": 1249.72,
+      "location": 2,
+      "content": "I remember that. You liked that too?"
+    },
+    {
+      "from": 1250.16,
+      "to": 1253.828,
+      "location": 2,
+      "content": "You know Oinkem?! You really are\nthe best gamer in Japan!"
+    },
+    {
+      "from": 1253.84,
+      "to": 1256.08,
+      "location": 2,
+      "content": "No one knows the game at all!"
+    },
+    {
+      "from": 1256.12,
+      "to": 1258.16,
+      "location": 2,
+      "content": "It's such a masterpiece too!"
+    },
+    {
+      "from": 1260.28,
+      "to": 1261.68,
+      "location": 2,
+      "content": "Back to the topic at hand."
+    },
+    {
+      "from": 1264.4,
+      "to": 1266,
+      "location": 2,
+      "content": "To get better at conversation,"
+    },
+    {
+      "from": 1267,
+      "to": 1270.948,
+      "location": 2,
+      "content": "you need to bring up new topics\nand expand on topics."
+    },
+    {
+      "from": 1270.96,
+      "to": 1273,
+      "location": 2,
+      "content": "You just need to practice these."
+    },
+    {
+      "from": 1275.08,
+      "to": 1275.72,
+      "location": 2,
+      "content": "Look at these."
+    },
+    {
+      "from": 1276.76,
+      "to": 1278.2,
+      "location": 2,
+      "content": "Vocab flashcards?"
+    },
+    {
+      "from": 1280.4,
+      "to": 1282.88,
+      "location": 2,
+      "content": "\"Nakajima from 1–1's younger brother\""
+    },
+    {
+      "from": 1284.96,
+      "to": 1287.6,
+      "location": 2,
+      "content": "\"Where you laughed in\nepisode 3 of 'The Secret Father'\""
+    },
+    {
+      "from": 1287.64,
+      "to": 1289.88,
+      "location": 2,
+      "content": "\"Matsumoto in 2–2's bodybuilding\""
+    },
+    {
+      "from": 1290.8,
+      "to": 1293.36,
+      "location": 2,
+      "content": "So I memorize these topics?"
+    },
+    {
+      "from": 1294,
+      "to": 1296.76,
+      "location": 2,
+      "content": "You'll never run out of topics with this."
+    },
+    {
+      "from": 1297.08,
+      "to": 1298.948,
+      "location": 2,
+      "content": "And this is yours too."
+    },
+    {
+      "from": 1298.96,
+      "to": 1300.28,
+      "location": 2,
+      "content": "An IC recorder?"
+    },
+    {
+      "from": 1300.32,
+      "to": 1304.44,
+      "location": 2,
+      "content": "I recorded our entire\nconversation here today."
+    },
+    { "from": 1304.76, "to": 1305.908, "location": 2, "content": "What?" },
+    {
+      "from": 1305.92,
+      "to": 1309.88,
+      "location": 2,
+      "content": "Listen to it later and check\non how you communicated."
+    },
+    { "from": 1310.52, "to": 1312.72, "location": 2, "content": "O–Okay." },
+    {
+      "from": 1313.44,
+      "to": 1315.708,
+      "location": 2,
+      "content": "Now, then. Let's talk about Saturday."
+    },
+    {
+      "from": 1315.72,
+      "to": 1318.96,
+      "location": 2,
+      "content": "Huh? School's off on Saturday."
+    },
+    {
+      "from": 1319.28,
+      "to": 1322.588,
+      "location": 2,
+      "content": "That's the point. I don't have club."
+    },
+    {
+      "from": 1322.6,
+      "to": 1325.48,
+      "location": 2,
+      "content": "We'll meet at Omiya Station at 11 AM."
+    },
+    {
+      "from": 1326.24,
+      "to": 1328.66,
+      "location": 2,
+      "content": "You're going to be out with me the whole day.\n"
+    }
+  ]
+}
