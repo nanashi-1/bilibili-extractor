@@ -34,6 +34,7 @@ pub fn merge(
     let mut binding = Command::new("ffmpeg");
     binding
         .arg("-y")
+        .args(["-hide_banner", "-loglevel", "error"]) // silent operation
         .args(["-i", video_path])
         .args(["-i", audio_path]);
 
