@@ -1,0 +1,18 @@
+1
+00:00:00,920 --> 00:00:03,120
+<i>Here at Sekitomo High School,</i>
+
+2
+00:00:03,160 --> 00:00:06,550
+<i>the girls are free to choose
+to wear either a ribbon or a necktie,</i>
+
+3
+00:00:06,560 --> 00:00:08,350
+<i>but for girls in lower castes,</i>
+
+4
+00:00:08,360 --> 00:00:12,320
+<i>it's an unspoken rule that they
+aren't allowed to wear neckties.</i>
+
