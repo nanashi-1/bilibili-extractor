@@ -50,6 +50,7 @@ pub fn merge(
         .args(["-map", "0"])
         .args(["-map", "1:a:0"])
         .args(["-map", "2"])
+        .args(["-metadata:s:s:0", "language=eng"])
         .args(["-codec", "copy"])
         .arg(output_path)
         .status()
