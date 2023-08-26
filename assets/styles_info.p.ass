@@ -1,4 +1,0 @@
-[V4+ Styles]
-Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Default,Noto Sans,100,&H00FFFFFF,&H0000FFFF,&H00082200,&H7F000000,-1,0,0,0,100,100,0,0,1,5,1.5,2,96,96,65,1
-
