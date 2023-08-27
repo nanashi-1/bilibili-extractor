@@ -3,6 +3,7 @@ pub enum Error {
     IOError(std::io::Error),
     SerdeJSONError(serde_json::Error),
     ParseIntError(std::num::ParseIntError),
+    FromString(String),
 }
 
 impl From<std::io::Error> for Error {
@@ -20,5 +21,11 @@ impl From<serde_json::Error> for Error {
 impl From<std::num::ParseIntError> for Error {
     fn from(value: std::num::ParseIntError) -> Self {
         Self::ParseIntError(value)
+    }
+}
+
+impl From<String> for Error {
+    fn from(value: String) -> Self {
+        Self::FromString(value)
     }
 }
