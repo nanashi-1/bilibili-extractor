@@ -12,7 +12,9 @@ use rsubs_lib::{
     Subtitle,
 };
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
+use std::{collections::HashMap, fs, path::PathBuf};
+
+use crate::error::Error;
 
 /// Contains information inside a Bilibili JSON subtitle.
 ///
@@ -58,6 +60,16 @@ impl JsonSubtitle {
 
     pub fn to_vtt(self) -> VTTFile {
         self.into()
+    }
+}
+
+impl TryFrom<PathBuf> for JsonSubtitle {
+    type Error = Error;
+
+    fn try_from(value: PathBuf) -> Result<Self, Self::Error> {
+        let json_string = fs::read_to_string(value)?;
+
+        Ok(serde_json::from_str(&json_string)?)
     }
 }
 
