@@ -1,3 +1,4 @@
+use crate::error::Error;
 use rsubs_lib::{
     srt::{SRTFile, SRTLine},
     ssa::{SSAEvent, SSAFile, SSAStyle},
@@ -13,8 +14,6 @@ use rsubs_lib::{
 };
 use serde::{Deserialize, Serialize};
 use std::{collections::HashMap, fs, path::Path};
-
-use crate::error::Error;
 
 /// Contains information inside a Bilibili JSON subtitle.
 ///

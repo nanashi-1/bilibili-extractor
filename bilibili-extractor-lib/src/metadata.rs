@@ -1,11 +1,9 @@
+use crate::error::Error;
+use serde::{Deserialize, Serialize};
 use std::{
     fs::read_to_string,
     path::{Path, PathBuf},
 };
-
-use serde::{Deserialize, Serialize};
-
-use crate::error::Error;
 
 /// Contains information inside a Bilibili JSON Entry file.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
