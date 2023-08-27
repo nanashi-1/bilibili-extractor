@@ -14,16 +14,33 @@ use rsubs_lib::{
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
+/// Contains information inside a Bilibili JSON subtitle.
+///
+/// # Convert to other subtitle format
+///
+/// ```
+/// use bilibili_extractor_lib::subtitle_converter::{JsonSubtitle, JsonSubtitleBody};
+///
+/// let json_subtitle = JsonSubtitle {
+///     body: vec![JsonSubtitleBody {
+///         from: 0.,
+///         to: 1.,
+///         content: "Subtitle".into(),
+///     }],
+/// };
+///
+/// println!("{}", json_subtitle.to_ssa().to_string())
+/// ```
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, PartialOrd)]
 pub struct JsonSubtitle {
-    body: Vec<JsonSubtitleBody>,
+    pub body: Vec<JsonSubtitleBody>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, PartialOrd)]
 pub struct JsonSubtitleBody {
-    from: f32,
-    to: f32,
-    content: String,
+    pub from: f32,
+    pub to: f32,
+    pub content: String,
 }
 
 impl JsonSubtitle {
