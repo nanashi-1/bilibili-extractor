@@ -12,7 +12,11 @@ use rsubs_lib::{
     Subtitle,
 };
 use serde::{Deserialize, Serialize};
-use std::{collections::HashMap, fs, path::PathBuf};
+use std::{
+    collections::HashMap,
+    fs,
+    path::{Path, PathBuf},
+};
 
 use crate::error::Error;
 
@@ -46,6 +50,12 @@ pub struct JsonSubtitleBody {
 }
 
 impl JsonSubtitle {
+    pub fn new_from_path(path: impl AsRef<Path>) -> Result<Self, Error> {
+        let json_string = fs::read_to_string(path)?;
+
+        Ok(serde_json::from_str(&json_string)?)
+    }
+
     pub fn to_subtitle(self) -> Subtitle {
         self.into()
     }
@@ -60,16 +70,6 @@ impl JsonSubtitle {
 
     pub fn to_vtt(self) -> VTTFile {
         self.into()
-    }
-}
-
-impl TryFrom<PathBuf> for JsonSubtitle {
-    type Error = Error;
-
-    fn try_from(value: PathBuf) -> Result<Self, Self::Error> {
-        let json_string = fs::read_to_string(value)?;
-
-        Ok(serde_json::from_str(&json_string)?)
     }
 }
 
