@@ -35,6 +35,7 @@ pub enum EpisodeMetadata<P: AsRef<Path>> {
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
 pub struct NormalEpisodeMetadata<P: AsRef<Path>> {
+    pub title: String,
     pub episode: usize,
     pub path: Option<P>,
     pub type_tag: String,
@@ -42,6 +43,7 @@ pub struct NormalEpisodeMetadata<P: AsRef<Path>> {
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
 pub struct SpecialEpisodeMetadata<P: AsRef<Path>> {
+    pub title: String,
     pub episode_name: String,
     pub path: Option<P>,
     pub type_tag: String,
@@ -152,6 +154,7 @@ impl<P: AsRef<Path>> TryInto<NormalEpisodeMetadata<P>> for JsonEntry {
         let episode = self.ep.index.parse()?;
 
         Ok(NormalEpisodeMetadata {
+            title: self.title,
             episode,
             path: None,
             type_tag: self.type_tag,
@@ -162,6 +165,7 @@ impl<P: AsRef<Path>> TryInto<NormalEpisodeMetadata<P>> for JsonEntry {
 impl<P: AsRef<Path>> From<JsonEntry> for SpecialEpisodeMetadata<P> {
     fn from(val: JsonEntry) -> Self {
         SpecialEpisodeMetadata {
+            title: val.title,
             episode_name: val.ep.index,
             path: None,
             type_tag: val.type_tag,
