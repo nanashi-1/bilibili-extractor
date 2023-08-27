@@ -12,11 +12,7 @@ use rsubs_lib::{
     Subtitle,
 };
 use serde::{Deserialize, Serialize};
-use std::{
-    collections::HashMap,
-    fs,
-    path::{Path, PathBuf},
-};
+use std::{collections::HashMap, fs, path::Path};
 
 use crate::error::Error;
 
