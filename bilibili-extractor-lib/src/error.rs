@@ -1,3 +1,4 @@
+#[derive(Debug)]
 pub enum Error {
     IOError(std::io::Error),
     SerdeJSONError(serde_json::Error),
