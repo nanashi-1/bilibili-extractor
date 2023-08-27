@@ -69,8 +69,8 @@ impl JsonSubtitle {
     }
 }
 
-impl Into<Subtitle> for JsonSubtitle {
-    fn into(self) -> Subtitle {
+impl From<JsonSubtitle> for Subtitle {
+    fn from(value: JsonSubtitle) -> Self {
         let mut ass_info = HashMap::new();
         ass_info.insert("Title".into(), "Bilibili Subtitle".into());
         ass_info.insert("ScriptType".into(), "v4.00+".into());
@@ -129,7 +129,7 @@ impl Into<Subtitle> for JsonSubtitle {
 
         let mut ass_event = vec![];
 
-        self.body.iter().for_each(|b| {
+        value.body.iter().for_each(|b| {
             ass_event.push(SSAEvent {
                 style: "Default".into(),
                 line_start: Time {
@@ -154,8 +154,8 @@ impl Into<Subtitle> for JsonSubtitle {
     }
 }
 
-impl Into<SSAFile> for JsonSubtitle {
-    fn into(self) -> SSAFile {
+impl From<JsonSubtitle> for SSAFile {
+    fn from(value: JsonSubtitle) -> Self {
         let mut ass_info = HashMap::new();
         ass_info.insert("Title".into(), "Bilibili Subtitle".into());
         ass_info.insert("ScriptType".into(), "v4.00+".into());
@@ -214,7 +214,7 @@ impl Into<SSAFile> for JsonSubtitle {
 
         let mut ass_event = vec![];
 
-        self.body.iter().for_each(|b| {
+        value.body.iter().for_each(|b| {
             ass_event.push(SSAEvent {
                 style: "Default".into(),
                 line_start: Time {
@@ -239,11 +239,11 @@ impl Into<SSAFile> for JsonSubtitle {
     }
 }
 
-impl Into<SRTFile> for JsonSubtitle {
-    fn into(self) -> SRTFile {
+impl From<JsonSubtitle> for SRTFile {
+    fn from(value: JsonSubtitle) -> Self {
         let mut srt_line = vec![];
 
-        for (i, b) in self.body.iter().enumerate() {
+        for (i, b) in value.body.iter().enumerate() {
             srt_line.push(SRTLine {
                 line_number: (i + 1) as i32,
                 line_text: b.content.clone(),
@@ -262,8 +262,8 @@ impl Into<SRTFile> for JsonSubtitle {
     }
 }
 
-impl Into<VTTFile> for JsonSubtitle {
-    fn into(self) -> VTTFile {
+impl From<JsonSubtitle> for VTTFile {
+    fn from(value: JsonSubtitle) -> Self {
         let vtt_style = VTTStyle {
             name: Some("Default".into()),
             font_family: "Noto Sans".into(),
@@ -285,7 +285,7 @@ impl Into<VTTFile> for JsonSubtitle {
 
         let mut vtt_lines = vec![];
 
-        for (i, b) in self.body.iter().enumerate() {
+        for (i, b) in value.body.iter().enumerate() {
             vtt_lines.push(VTTLine {
                 line_number: i.to_string(),
                 style: Some("Default".into()),

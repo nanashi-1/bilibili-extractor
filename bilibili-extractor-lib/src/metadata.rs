@@ -138,11 +138,11 @@ impl<P: AsRef<Path>> SpecialEpisodeMetadata<P> {
     }
 }
 
-impl<P: AsRef<Path>> Into<EpisodeMetadata<P>> for JsonEntry {
-    fn into(self) -> EpisodeMetadata<P> {
-        match self.ep.index.parse::<usize>() {
-            Ok(_) => EpisodeMetadata::Normal(self.try_into().unwrap()),
-            Err(_) => EpisodeMetadata::Special(self.into()),
+impl<P: AsRef<Path>> From<JsonEntry> for EpisodeMetadata<P> {
+    fn from(val: JsonEntry) -> Self {
+        match val.ep.index.parse::<usize>() {
+            Ok(_) => EpisodeMetadata::Normal(val.try_into().unwrap()),
+            Err(_) => EpisodeMetadata::Special(val.into()),
         }
     }
 }
@@ -161,12 +161,12 @@ impl<P: AsRef<Path>> TryInto<NormalEpisodeMetadata<P>> for JsonEntry {
     }
 }
 
-impl<P: AsRef<Path>> Into<SpecialEpisodeMetadata<P>> for JsonEntry {
-    fn into(self) -> SpecialEpisodeMetadata<P> {
+impl<P: AsRef<Path>> From<JsonEntry> for SpecialEpisodeMetadata<P> {
+    fn from(val: JsonEntry) -> Self {
         SpecialEpisodeMetadata {
-            episode_name: self.ep.index,
+            episode_name: val.ep.index,
             path: None,
-            type_tag: self.type_tag,
+            type_tag: val.type_tag,
         }
     }
 }
