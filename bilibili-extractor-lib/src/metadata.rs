@@ -101,15 +101,15 @@ impl SeasonMetadata<PathBuf> {
             season_metadata.add_episode(episode_metadata);
         }
 
-        Ok(season_metadata)
+        Ok(season_metadata.set_path(path.as_ref().to_path_buf()))
     }
 }
 
 impl<P: AsRef<Path>> EpisodeMetadata<P> {
     pub fn new_from_path(path: P) -> Result<Self, Error> {
-        let json = serde_json::from_str::<JsonEntry>(&read_to_string(path)?)?;
+        let json = serde_json::from_str::<JsonEntry>(&read_to_string(&path)?)?;
 
-        Ok(json.into())
+        Ok(Self::from(json).set_path(path))
     }
 
     pub fn set_path(self, path: P) -> Self {
