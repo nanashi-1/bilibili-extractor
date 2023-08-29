@@ -29,3 +29,9 @@ impl From<String> for Error {
         Self::FromString(value)
     }
 }
+
+impl From<&str> for Error {
+    fn from(value: &str) -> Self {
+        Self::FromString(value.into())
+    }
+}
