@@ -1,5 +1,5 @@
 use crate::{
-    error::Error,
+    error::Result,
     metadata::{NormalEpisodeMetadata, SeasonMetadata, SpecialEpisodeMetadata},
 };
 use serde::{Deserialize, Serialize};
@@ -20,7 +20,7 @@ pub struct PackagerConfig {
 }
 
 impl<P: AsRef<Path>> Packager<P> {
-    pub fn new(output_path: P) -> Result<Self, Error> {
+    pub fn new(output_path: P) -> Result<Self> {
         create_dir_all(&output_path)?;
 
         Ok(Self {
@@ -33,21 +33,18 @@ impl<P: AsRef<Path>> Packager<P> {
         Self { config, ..self }
     }
 
-    pub fn save_season(
-        &self,
-        season_metadata: SeasonMetadata<impl AsRef<Path>>,
-    ) -> Result<(), Error> {
+    pub fn save_season(&self, season_metadata: SeasonMetadata<impl AsRef<Path>>) -> Result<()> {
         season_metadata
             .normal_episodes
             .iter()
             .map(|e| Ok(self.save_normal_episode(e)?))
-            .collect::<Result<_, Error>>()?;
+            .collect::<Result<_>>()?;
 
         season_metadata
             .special_episodes
             .iter()
             .map(|e| Ok(self.save_special_episode(e)?))
-            .collect::<Result<_, Error>>()?;
+            .collect::<Result<_>>()?;
 
         Ok(())
     }
@@ -55,7 +52,7 @@ impl<P: AsRef<Path>> Packager<P> {
     pub fn save_normal_episode(
         &self,
         episode_metadata: &NormalEpisodeMetadata<impl AsRef<Path>>,
-    ) -> Result<(), Error> {
+    ) -> Result<()> {
         let episode_video_path = episode_metadata
             .path
             .as_ref()
@@ -99,7 +96,7 @@ impl<P: AsRef<Path>> Packager<P> {
     pub fn save_special_episode(
         &self,
         episode_metadata: &SpecialEpisodeMetadata<impl AsRef<Path>>,
-    ) -> Result<(), Error> {
+    ) -> Result<()> {
         let episode_video_path = episode_metadata
             .path
             .as_ref()

@@ -1,4 +1,4 @@
-use crate::error::Error;
+use crate::error::{Error, Result};
 use serde::{Deserialize, Serialize};
 use std::{
     fs::read_to_string,
@@ -83,7 +83,7 @@ impl<P: AsRef<Path>> SeasonMetadata<P> {
 }
 
 impl SeasonMetadata<PathBuf> {
-    pub fn new_from_path(path: impl AsRef<Path>) -> Result<Self, Error> {
+    pub fn new_from_path(path: impl AsRef<Path>) -> Result<Self> {
         let json_entry = serde_json::from_str::<JsonEntry>(&read_to_string(
             path.as_ref()
                 .read_dir()?
@@ -106,7 +106,7 @@ impl SeasonMetadata<PathBuf> {
 }
 
 impl<P: AsRef<Path>> EpisodeMetadata<P> {
-    pub fn new_from_path(path: P) -> Result<Self, Error> {
+    pub fn new_from_path(path: P) -> Result<Self> {
         let json =
             serde_json::from_str::<JsonEntry>(&read_to_string(&path.as_ref().join("entry.json"))?)?;
 
@@ -129,7 +129,7 @@ impl<P: AsRef<Path>> NormalEpisodeMetadata<P> {
         }
     }
 
-    pub fn get_subtitle_path(&self, subtitle_language: &str) -> Result<PathBuf, Error> {
+    pub fn get_subtitle_path(&self, subtitle_language: &str) -> Result<PathBuf> {
         Ok(self
             .path
             .as_ref()
@@ -154,7 +154,7 @@ impl<P: AsRef<Path>> SpecialEpisodeMetadata<P> {
         }
     }
 
-    pub fn get_subtitle_path(&self, subtitle_language: &str) -> Result<PathBuf, Error> {
+    pub fn get_subtitle_path(&self, subtitle_language: &str) -> Result<PathBuf> {
         Ok(self
             .path
             .as_ref()
@@ -183,7 +183,7 @@ impl<P: AsRef<Path>> From<JsonEntry> for EpisodeMetadata<P> {
 impl<P: AsRef<Path>> TryInto<NormalEpisodeMetadata<P>> for JsonEntry {
     type Error = Error;
 
-    fn try_into(self) -> Result<NormalEpisodeMetadata<P>, Self::Error> {
+    fn try_into(self) -> Result<NormalEpisodeMetadata<P>> {
         let episode = self.ep.index.parse()?;
 
         Ok(NormalEpisodeMetadata {

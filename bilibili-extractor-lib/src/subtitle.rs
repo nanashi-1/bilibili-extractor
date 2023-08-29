@@ -1,5 +1,5 @@
 use crate::{
-    error::Error,
+    error::{Error, Result},
     metadata::{EpisodeMetadata, NormalEpisodeMetadata, SpecialEpisodeMetadata},
 };
 use rsubs_lib::{
@@ -67,7 +67,7 @@ impl JsonSubtitle {
     pub fn new_from_episode(
         episode: &EpisodeMetadata<impl AsRef<Path>>,
         subtitle_language: &str,
-    ) -> Result<Self, Error> {
+    ) -> Result<Self> {
         match episode {
             EpisodeMetadata::Normal(e) => Self::new_from_normal_episode(e, subtitle_language),
             EpisodeMetadata::Special(e) => Self::new_from_special_episode(e, subtitle_language),
@@ -77,7 +77,7 @@ impl JsonSubtitle {
     pub fn new_from_normal_episode(
         episode: &NormalEpisodeMetadata<impl AsRef<Path>>,
         subtitle_language: &str,
-    ) -> Result<Self, Error> {
+    ) -> Result<Self> {
         let subtitle_path = episode
             .path
             .as_ref()
@@ -98,7 +98,7 @@ impl JsonSubtitle {
     pub fn new_from_special_episode(
         episode: &SpecialEpisodeMetadata<impl AsRef<Path>>,
         subtitle_language: &str,
-    ) -> Result<Self, Error> {
+    ) -> Result<Self> {
         let subtitle_path = episode
             .path
             .as_ref()
@@ -116,7 +116,7 @@ impl JsonSubtitle {
         Ok(Self::new_from_path(subtitle_path)?)
     }
 
-    pub fn new_from_path(path: impl AsRef<Path>) -> Result<Self, Error> {
+    pub fn new_from_path(path: impl AsRef<Path>) -> Result<Self> {
         let json_string = fs::read_to_string(path)?;
 
         Ok(serde_json::from_str(&json_string)?)
@@ -383,7 +383,7 @@ impl SubtitleFormat {
     pub fn get_episode_subtitle_type(
         episode: &EpisodeMetadata<impl AsRef<Path>>,
         subtitle_language: &str,
-    ) -> Result<Self, Error> {
+    ) -> Result<Self> {
         match episode {
             EpisodeMetadata::Normal(e) => {
                 Self::get_normal_episode_subtitle_type(e, subtitle_language)
@@ -397,7 +397,7 @@ impl SubtitleFormat {
     pub fn get_normal_episode_subtitle_type(
         episode: &NormalEpisodeMetadata<impl AsRef<Path>>,
         subtitle_language: &str,
-    ) -> Result<Self, Error> {
+    ) -> Result<Self> {
         let subtitle_path = episode
             .path
             .as_ref()
@@ -431,7 +431,7 @@ impl SubtitleFormat {
     pub fn get_special_episode_subtitle_type(
         episode: &SpecialEpisodeMetadata<impl AsRef<Path>>,
         subtitle_language: &str,
-    ) -> Result<Self, Error> {
+    ) -> Result<Self> {
         let subtitle_path = episode
             .path
             .as_ref()

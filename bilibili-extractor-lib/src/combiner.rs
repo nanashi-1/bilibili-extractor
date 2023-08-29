@@ -4,7 +4,7 @@ use std::{
     process::{Command, ExitStatus},
 };
 
-use crate::{error::Error, metadata::NormalEpisodeMetadata, subtitle::SubtitleType};
+use crate::{error::Result, metadata::NormalEpisodeMetadata, subtitle::SubtitleType};
 
 pub trait Combinable {
     fn combine(
@@ -12,7 +12,7 @@ pub trait Combinable {
         subtitle_path: impl AsRef<Path>,
         subtitle_language: &str,
         subtitle_type: SubtitleType,
-    ) -> Result<ExitStatus, Error>;
+    ) -> Result<ExitStatus>;
 }
 
 impl<P: AsRef<Path>> Combinable for NormalEpisodeMetadata<P> {
@@ -21,7 +21,7 @@ impl<P: AsRef<Path>> Combinable for NormalEpisodeMetadata<P> {
         subtitle_path: impl AsRef<Path>,
         subtitle_language: &str,
         subtitle_type: SubtitleType,
-    ) -> Result<ExitStatus, Error> {
+    ) -> Result<ExitStatus> {
         let video_path = self
             .path
             .as_ref()
