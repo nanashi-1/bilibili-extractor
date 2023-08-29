@@ -4,7 +4,7 @@ use std::{
     process::{Command, ExitStatus},
 };
 
-use crate::{error::Error, metadata::NormalEpisodeMetadata, SubtitleType};
+use crate::{error::Error, metadata::NormalEpisodeMetadata, subtitle::SubtitleType};
 
 pub trait Combinable {
     fn combine(

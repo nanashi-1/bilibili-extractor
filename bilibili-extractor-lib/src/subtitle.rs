@@ -44,6 +44,22 @@ pub struct JsonSubtitleBody {
     pub content: String,
 }
 
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord, Default)]
+pub enum SubtitleType {
+    Hard,
+    #[default]
+    Soft,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord, Default)]
+pub enum SubtitleFormat {
+    #[default]
+    Json,
+    Ssa,
+    Srt,
+    Vtt,
+}
+
 impl JsonSubtitle {
     pub fn new_from_path(path: impl AsRef<Path>) -> Result<Self, Error> {
         let json_string = fs::read_to_string(path)?;
