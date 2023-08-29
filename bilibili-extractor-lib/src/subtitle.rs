@@ -89,7 +89,7 @@ impl JsonSubtitle {
             .join(subtitle_language)
             .read_dir()?
             .next()
-            .ok_or("Subtitle directory is empty")??
+            .ok_or("Subtitle directory is empty.")??
             .path();
 
         Ok(Self::new_from_path(subtitle_path)?)
@@ -110,7 +110,7 @@ impl JsonSubtitle {
             .join(subtitle_language)
             .read_dir()?
             .next()
-            .ok_or("Subtitle directory is empty")??
+            .ok_or("Subtitle directory is empty.")??
             .path();
 
         Ok(Self::new_from_path(subtitle_path)?)
@@ -416,7 +416,10 @@ impl SubtitleFormat {
             subtitle_path.display()
         ))?;
 
-        match extension.to_str().ok_or("")? {
+        match extension
+            .to_str()
+            .ok_or("OsStr doesn't yeild valid Unicode.")?
+        {
             "json" => Ok(Self::Json),
             "ass" | "ssa" => Ok(Self::Ssa),
             "srt" => Ok(Self::Srt),
@@ -443,14 +446,17 @@ impl SubtitleFormat {
             .join(subtitle_language)
             .read_dir()?
             .next()
-            .ok_or("Subtitle directory is empty")??
+            .ok_or("Subtitle directory is empty.")??
             .path();
         let extension = subtitle_path.extension().ok_or(format!(
             "Subtitle {} has no extension.",
             subtitle_path.display()
         ))?;
 
-        match extension.to_str().ok_or("")? {
+        match extension
+            .to_str()
+            .ok_or("OsStr doesn't yeild valid Unicode.")?
+        {
             "json" => Ok(Self::Json),
             "ass" | "ssa" => Ok(Self::Ssa),
             "srt" => Ok(Self::Srt),

@@ -57,7 +57,7 @@ impl<P: AsRef<Path>> Packager<P> {
             .path
             .as_ref()
             .ok_or(format!(
-                "Episode {} of {} doesn't contain a path",
+                "Episode {} of {} doesn't have a path.",
                 episode_metadata.episode, episode_metadata.title
             ))?
             .as_ref()
@@ -101,7 +101,7 @@ impl<P: AsRef<Path>> Packager<P> {
             .path
             .as_ref()
             .ok_or(format!(
-                "Episode {} of {} doesn't contain a path",
+                "Episode {} of {} doesn't have a path.",
                 episode_metadata.episode_name, episode_metadata.title
             ))?
             .as_ref()

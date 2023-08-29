@@ -141,7 +141,7 @@ impl<P: AsRef<Path>> NormalEpisodeMetadata<P> {
             .join(subtitle_language)
             .read_dir()?
             .next()
-            .ok_or("Subtitle directory is empty")??
+            .ok_or("Subtitle directory is empty.")??
             .path())
     }
 }
@@ -166,7 +166,7 @@ impl<P: AsRef<Path>> SpecialEpisodeMetadata<P> {
             .join(subtitle_language)
             .read_dir()?
             .next()
-            .ok_or("Subtitle directory is empty")??
+            .ok_or("Subtitle directory is empty.")??
             .path())
     }
 }
