@@ -9,10 +9,9 @@ use crate::{error::Error, metadata::NormalEpisodeMetadata, subtitle::SubtitleTyp
 pub trait Combinable {
     fn combine(
         &self,
-        aubtitle_path: impl AsRef<Path>,
+        subtitle_path: impl AsRef<Path>,
         subtitle_language: &str,
         subtitle_type: SubtitleType,
-        output_path: impl AsRef<Path>,
     ) -> Result<ExitStatus, Error>;
 }
 
@@ -22,7 +21,6 @@ impl<P: AsRef<Path>> Combinable for NormalEpisodeMetadata<P> {
         subtitle_path: impl AsRef<Path>,
         subtitle_language: &str,
         subtitle_type: SubtitleType,
-        output_path: impl AsRef<Path>,
     ) -> Result<ExitStatus, Error> {
         let video_path = self
             .path
@@ -33,7 +31,7 @@ impl<P: AsRef<Path>> Combinable for NormalEpisodeMetadata<P> {
             ))?
             .as_ref()
             .join(&self.type_tag)
-            .join("video.m4a");
+            .join("video.m4s");
 
         let audio_path = self
             .path
@@ -41,7 +39,15 @@ impl<P: AsRef<Path>> Combinable for NormalEpisodeMetadata<P> {
             .unwrap()
             .as_ref()
             .join(&self.type_tag)
-            .join("audio.m4a");
+            .join("audio.m4s");
+
+        let output_path = self
+            .path
+            .as_ref()
+            .unwrap()
+            .as_ref()
+            .join(&self.type_tag)
+            .join("episode.mkv");
 
         let mut binding = Command::new("ffmpeg");
         binding
@@ -56,7 +62,7 @@ impl<P: AsRef<Path>> Combinable for NormalEpisodeMetadata<P> {
                     "-vf",
                     &format!("subtitles={}", subtitle_path.as_ref().display()),
                 ])
-                .arg(output_path.as_ref().as_os_str())
+                .arg(output_path)
                 .status()?),
             SubtitleType::Soft => Ok(binding
                 .args([OsStr::new("-i"), subtitle_path.as_ref().as_os_str()])
@@ -65,6 +71,7 @@ impl<P: AsRef<Path>> Combinable for NormalEpisodeMetadata<P> {
                 .args(["-map", "2"])
                 .args(["-metadata:s:s:0", &format!("language={subtitle_language}")])
                 .args(["-codec", "copy"])
+                .arg(output_path)
                 .status()?),
         }
     }

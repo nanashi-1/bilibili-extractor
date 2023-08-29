@@ -96,7 +96,7 @@ impl SeasonMetadata<PathBuf> {
         let mut season_metadata = Self::new(json_entry);
 
         for p in path.as_ref().read_dir()? {
-            let episode_metadata = EpisodeMetadata::new_from_path(p?.path().join("entry.json"))?;
+            let episode_metadata = EpisodeMetadata::new_from_path(p?.path())?;
 
             season_metadata.add_episode(episode_metadata);
         }
@@ -107,7 +107,8 @@ impl SeasonMetadata<PathBuf> {
 
 impl<P: AsRef<Path>> EpisodeMetadata<P> {
     pub fn new_from_path(path: P) -> Result<Self, Error> {
-        let json = serde_json::from_str::<JsonEntry>(&read_to_string(&path)?)?;
+        let json =
+            serde_json::from_str::<JsonEntry>(&read_to_string(&path.as_ref().join("entry.json"))?)?;
 
         Ok(Self::from(json).set_path(path))
     }
@@ -127,6 +128,22 @@ impl<P: AsRef<Path>> NormalEpisodeMetadata<P> {
             ..self
         }
     }
+
+    pub fn get_subtitle_path(&self, subtitle_language: &str) -> Result<PathBuf, Error> {
+        Ok(self
+            .path
+            .as_ref()
+            .ok_or(format!(
+                "Episode {} of {} doesn't have a path.",
+                self.episode, self.title
+            ))?
+            .as_ref()
+            .join(subtitle_language)
+            .read_dir()?
+            .next()
+            .ok_or("Subtitle directory is empty")??
+            .path())
+    }
 }
 
 impl<P: AsRef<Path>> SpecialEpisodeMetadata<P> {
@@ -135,6 +152,22 @@ impl<P: AsRef<Path>> SpecialEpisodeMetadata<P> {
             path: Some(path),
             ..self
         }
+    }
+
+    pub fn get_subtitle_path(&self, subtitle_language: &str) -> Result<PathBuf, Error> {
+        Ok(self
+            .path
+            .as_ref()
+            .ok_or(format!(
+                "{} of {} doesn't have a path.",
+                self.episode_name, self.title
+            ))?
+            .as_ref()
+            .join(subtitle_language)
+            .read_dir()?
+            .next()
+            .ok_or("Subtitle directory is empty")??
+            .path())
     }
 }
 

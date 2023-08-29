@@ -4,7 +4,7 @@ use crate::{
 };
 use serde::{Deserialize, Serialize};
 use std::{
-    fs::{copy, rename},
+    fs::{copy, create_dir_all, rename},
     path::Path,
 };
 
@@ -20,18 +20,23 @@ pub struct PackagerConfig {
 }
 
 impl<P: AsRef<Path>> Packager<P> {
-    pub fn new(output_path: P) -> Self {
-        Self {
+    pub fn new(output_path: P) -> Result<Self, Error> {
+        create_dir_all(&output_path)?;
+
+        Ok(Self {
             output_path,
             config: Default::default(),
-        }
+        })
     }
 
     pub fn set_config(self, config: PackagerConfig) -> Self {
         Self { config, ..self }
     }
 
-    pub fn save_season(&self, season_metadata: SeasonMetadata<P>) -> Result<(), Error> {
+    pub fn save_season(
+        &self,
+        season_metadata: SeasonMetadata<impl AsRef<Path>>,
+    ) -> Result<(), Error> {
         season_metadata
             .normal_episodes
             .iter()
@@ -49,7 +54,7 @@ impl<P: AsRef<Path>> Packager<P> {
 
     pub fn save_normal_episode(
         &self,
-        episode_metadata: &NormalEpisodeMetadata<P>,
+        episode_metadata: &NormalEpisodeMetadata<impl AsRef<Path>>,
     ) -> Result<(), Error> {
         let episode_video_path = episode_metadata
             .path
@@ -61,6 +66,8 @@ impl<P: AsRef<Path>> Packager<P> {
             .as_ref()
             .join(&episode_metadata.type_tag)
             .join("episode.mkv");
+
+        create_dir_all(self.output_path.as_ref().join(&episode_metadata.title))?;
 
         if self.config.copy {
             copy(
@@ -91,7 +98,7 @@ impl<P: AsRef<Path>> Packager<P> {
 
     pub fn save_special_episode(
         &self,
-        episode_metadata: &SpecialEpisodeMetadata<P>,
+        episode_metadata: &SpecialEpisodeMetadata<impl AsRef<Path>>,
     ) -> Result<(), Error> {
         let episode_video_path = episode_metadata
             .path
