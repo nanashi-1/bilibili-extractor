@@ -49,7 +49,7 @@ pub struct JsonSubtitleBody {
 }
 
 /// Either a softsub or hardsub.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord, Default)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord, Default)]
 pub enum SubtitleType {
     Hard,
     #[default]
@@ -57,7 +57,7 @@ pub enum SubtitleType {
 }
 
 /// Format of the subtitle. Though Bilibili only uses SSA and JSON.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord, Default)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord, Default)]
 pub enum SubtitleFormat {
     #[default]
     Json,
