@@ -20,6 +20,12 @@ pub struct JsonEntryEpisodeMetadata {
     pub index: String,
 }
 
+/// The download folder of Bilibili. Contains all the seasons downloaded.
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
+pub struct DownloadFolder<P: AsRef<Path>> {
+    pub seasons: Vec<SeasonMetadata<P>>,
+}
+
 /// Contains information of the entire season, including its episode, both normal and special.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
 pub struct SeasonMetadata<P: AsRef<Path>> {
@@ -52,6 +58,21 @@ pub struct SpecialEpisodeMetadata<P: AsRef<Path>> {
     pub episode_name: String,
     pub path: Option<P>,
     pub type_tag: String,
+}
+
+impl DownloadFolder<PathBuf> {
+    /// Creates a `DownloadFolder` from path.
+    pub fn new_from_path(path: impl AsRef<Path>) -> Result<Self> {
+        let mut seasons = vec![];
+
+        for p in path.as_ref().read_dir()? {
+            let season_metadata = SeasonMetadata::new_from_path(p?.path())?;
+
+            seasons.push(season_metadata);
+        }
+
+        Ok(Self { seasons })
+    }
 }
 
 impl<P: AsRef<Path>> SeasonMetadata<P> {
