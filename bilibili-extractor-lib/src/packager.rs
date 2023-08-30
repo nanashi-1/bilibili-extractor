@@ -8,18 +8,21 @@ use std::{
     path::Path,
 };
 
+/// Packages seasons and episodes.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Packager<P: AsRef<Path>> {
     pub output_path: P,
     pub config: PackagerConfig,
 }
 
+/// Config used for packaging.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord, Default)]
 pub struct PackagerConfig {
     pub copy: bool,
 }
 
 impl<P: AsRef<Path>> Packager<P> {
+    /// Create a new `Packager`.
     pub fn new(output_path: P) -> Result<Self> {
         create_dir_all(&output_path)?;
 
@@ -29,10 +32,12 @@ impl<P: AsRef<Path>> Packager<P> {
         })
     }
 
+    /// Set config for `Packager`.
     pub fn set_config(self, config: PackagerConfig) -> Self {
         Self { config, ..self }
     }
 
+    /// Package a season.
     pub fn save_season(&self, season_metadata: SeasonMetadata<impl AsRef<Path>>) -> Result<()> {
         season_metadata
             .normal_episodes
@@ -49,6 +54,7 @@ impl<P: AsRef<Path>> Packager<P> {
         Ok(())
     }
 
+    /// Package a normal episode.
     pub fn save_normal_episode(
         &self,
         episode_metadata: &NormalEpisodeMetadata<impl AsRef<Path>>,
@@ -93,6 +99,7 @@ impl<P: AsRef<Path>> Packager<P> {
         Ok(())
     }
 
+    /// Package a special episode.
     pub fn save_special_episode(
         &self,
         episode_metadata: &SpecialEpisodeMetadata<impl AsRef<Path>>,

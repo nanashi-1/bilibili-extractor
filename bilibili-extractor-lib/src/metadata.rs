@@ -13,12 +13,14 @@ pub struct JsonEntry {
     pub type_tag: String,
 }
 
+/// Contains information about the episode. It can be found inside a Bilibili JSON file.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
 pub struct JsonEntryEpisodeMetadata {
     pub index_title: String,
     pub index: String,
 }
 
+/// Contains information of the entire season, including its episode, both normal and special.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
 pub struct SeasonMetadata<P: AsRef<Path>> {
     pub title: String,
@@ -27,12 +29,14 @@ pub struct SeasonMetadata<P: AsRef<Path>> {
     pub special_episodes: Vec<SpecialEpisodeMetadata<P>>,
 }
 
+/// Contains information of the episode. It can be either normal or special.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
 pub enum EpisodeMetadata<P: AsRef<Path>> {
     Normal(NormalEpisodeMetadata<P>),
     Special(SpecialEpisodeMetadata<P>),
 }
 
+/// Contains information of the normal episode.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
 pub struct NormalEpisodeMetadata<P: AsRef<Path>> {
     pub title: String,
@@ -41,6 +45,7 @@ pub struct NormalEpisodeMetadata<P: AsRef<Path>> {
     pub type_tag: String,
 }
 
+/// Contains information of the special episode.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
 pub struct SpecialEpisodeMetadata<P: AsRef<Path>> {
     pub title: String,
@@ -50,6 +55,7 @@ pub struct SpecialEpisodeMetadata<P: AsRef<Path>> {
 }
 
 impl<P: AsRef<Path>> SeasonMetadata<P> {
+    /// Creates a `SeasonMetadata` from a `JsonEntry`.
     pub fn new(entry: JsonEntry) -> Self {
         Self {
             title: entry.title,
@@ -59,6 +65,7 @@ impl<P: AsRef<Path>> SeasonMetadata<P> {
         }
     }
 
+    /// Set the path of a `SeasonMetadata`.
     pub fn set_path(self, path: P) -> Self {
         Self {
             path: Some(path),
@@ -66,6 +73,7 @@ impl<P: AsRef<Path>> SeasonMetadata<P> {
         }
     }
 
+    /// Add an episode to `SeasonMetadata`.
     pub fn add_episode(&mut self, episode: EpisodeMetadata<P>) {
         match episode {
             EpisodeMetadata::Normal(e) => self.normal_episodes.push(e),
@@ -73,16 +81,19 @@ impl<P: AsRef<Path>> SeasonMetadata<P> {
         }
     }
 
+    /// Add a normal episode to `SeasonMetadata`.
     pub fn add_normal_episode(&mut self, episode: NormalEpisodeMetadata<P>) {
         self.normal_episodes.push(episode)
     }
 
+    /// Add a special episode to `SeasonMetadata`.
     pub fn add_special_episode(&mut self, episode: SpecialEpisodeMetadata<P>) {
         self.special_episodes.push(episode)
     }
 }
 
 impl SeasonMetadata<PathBuf> {
+    /// Creates a `SeasonMetadata` from path.
     pub fn new_from_path(path: impl AsRef<Path>) -> Result<Self> {
         let json_entry = serde_json::from_str::<JsonEntry>(&read_to_string(
             path.as_ref()
@@ -106,6 +117,7 @@ impl SeasonMetadata<PathBuf> {
 }
 
 impl<P: AsRef<Path>> EpisodeMetadata<P> {
+    /// Create an episode metadata from path.
     pub fn new_from_path(path: P) -> Result<Self> {
         let json =
             serde_json::from_str::<JsonEntry>(&read_to_string(&path.as_ref().join("entry.json"))?)?;
@@ -113,6 +125,7 @@ impl<P: AsRef<Path>> EpisodeMetadata<P> {
         Ok(Self::from(json).set_path(path))
     }
 
+    /// Set the path of an `EpisodeMetadata`.
     pub fn set_path(self, path: P) -> Self {
         match self {
             EpisodeMetadata::Normal(e) => Self::Normal(e.set_path(path)),
@@ -122,6 +135,7 @@ impl<P: AsRef<Path>> EpisodeMetadata<P> {
 }
 
 impl<P: AsRef<Path>> NormalEpisodeMetadata<P> {
+    /// Set the path of a `NormalEpisodeMetadata`
     pub fn set_path(self, path: P) -> Self {
         Self {
             path: Some(path),
@@ -129,6 +143,7 @@ impl<P: AsRef<Path>> NormalEpisodeMetadata<P> {
         }
     }
 
+    /// Get the path of the subtitle.
     pub fn get_subtitle_path(&self, subtitle_language: &str) -> Result<PathBuf> {
         Ok(self
             .path
@@ -147,6 +162,7 @@ impl<P: AsRef<Path>> NormalEpisodeMetadata<P> {
 }
 
 impl<P: AsRef<Path>> SpecialEpisodeMetadata<P> {
+    /// Set the path of a `SpecialEpisodeMetadata`
     pub fn set_path(self, path: P) -> Self {
         Self {
             path: Some(path),
@@ -154,6 +170,7 @@ impl<P: AsRef<Path>> SpecialEpisodeMetadata<P> {
         }
     }
 
+    /// Get the path of the subtitle.
     pub fn get_subtitle_path(&self, subtitle_language: &str) -> Result<PathBuf> {
         Ok(self
             .path

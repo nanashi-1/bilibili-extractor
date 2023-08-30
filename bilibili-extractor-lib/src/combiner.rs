@@ -10,6 +10,7 @@ use std::{
 };
 
 pub trait Combinable {
+    /// Combine the audio, video, and subtitle using `ffmpeg`.
     fn combine(
         &self,
         subtitle_path: impl AsRef<Path>,

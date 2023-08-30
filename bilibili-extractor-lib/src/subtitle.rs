@@ -40,6 +40,7 @@ pub struct JsonSubtitle {
     pub body: Vec<JsonSubtitleBody>,
 }
 
+/// Lines inside a Bilibili JSON subtitle.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, PartialOrd)]
 pub struct JsonSubtitleBody {
     pub from: f32,
@@ -47,6 +48,7 @@ pub struct JsonSubtitleBody {
     pub content: String,
 }
 
+/// Either a softsub or hardsub.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord, Default)]
 pub enum SubtitleType {
     Hard,
@@ -54,6 +56,7 @@ pub enum SubtitleType {
     Soft,
 }
 
+/// Format of the subtitle. Though Bilibili only uses SSA and JSON.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord, Default)]
 pub enum SubtitleFormat {
     #[default]
@@ -64,6 +67,7 @@ pub enum SubtitleFormat {
 }
 
 impl JsonSubtitle {
+    /// Fetch the json subtitle of an episode.
     pub fn new_from_episode(
         episode: &EpisodeMetadata<impl AsRef<Path>>,
         subtitle_language: &str,
@@ -74,6 +78,7 @@ impl JsonSubtitle {
         }
     }
 
+    /// Fetch the json subtitle of a normal episode.
     pub fn new_from_normal_episode(
         episode: &NormalEpisodeMetadata<impl AsRef<Path>>,
         subtitle_language: &str,
@@ -95,6 +100,7 @@ impl JsonSubtitle {
         Ok(Self::new_from_path(subtitle_path)?)
     }
 
+    /// Fetch the json subtitle of a special episode.
     pub fn new_from_special_episode(
         episode: &SpecialEpisodeMetadata<impl AsRef<Path>>,
         subtitle_language: &str,
@@ -116,24 +122,29 @@ impl JsonSubtitle {
         Ok(Self::new_from_path(subtitle_path)?)
     }
 
+    /// Create a `JsonSubtitle` from path.
     pub fn new_from_path(path: impl AsRef<Path>) -> Result<Self> {
         let json_string = fs::read_to_string(path)?;
 
         Ok(serde_json::from_str(&json_string)?)
     }
 
+    /// Convert to `Subtitle`.
     pub fn to_subtitle(self) -> Subtitle {
         self.into()
     }
 
+    /// Convert to `SSAFile`.
     pub fn to_ssa(self) -> SSAFile {
         self.into()
     }
 
+    /// Convert to `SRTFile`.
     pub fn to_srt(self) -> SRTFile {
         self.into()
     }
 
+    /// Convert to `VTTFile`.
     pub fn to_vtt(self) -> VTTFile {
         self.into()
     }
@@ -380,6 +391,7 @@ impl From<JsonSubtitle> for VTTFile {
 }
 
 impl SubtitleFormat {
+    /// Get the subtitle format of an episode.
     pub fn get_episode_subtitle_type(
         episode: &EpisodeMetadata<impl AsRef<Path>>,
         subtitle_language: &str,
@@ -394,6 +406,7 @@ impl SubtitleFormat {
         }
     }
 
+    /// Get the subtitle format of a normal episode.
     pub fn get_normal_episode_subtitle_type(
         episode: &NormalEpisodeMetadata<impl AsRef<Path>>,
         subtitle_language: &str,
@@ -431,6 +444,7 @@ impl SubtitleFormat {
         }
     }
 
+    /// Get the subtitle format of a special episode.
     pub fn get_special_episode_subtitle_type(
         episode: &SpecialEpisodeMetadata<impl AsRef<Path>>,
         subtitle_language: &str,
