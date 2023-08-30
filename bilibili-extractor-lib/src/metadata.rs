@@ -66,7 +66,10 @@ impl DownloadFolder<PathBuf> {
         let mut seasons = vec![];
 
         for p in path.as_ref().read_dir()? {
-            let season_metadata = SeasonMetadata::new_from_path(p?.path())?;
+            let season_metadata = match SeasonMetadata::new_from_path(p?.path()) {
+                Ok(v) => v,
+                Err(_) => continue,
+            };
 
             seasons.push(season_metadata);
         }
