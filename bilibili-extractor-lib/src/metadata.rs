@@ -71,6 +71,8 @@ impl DownloadFolder<PathBuf> {
             seasons.push(season_metadata);
         }
 
+        seasons.sort();
+
         Ok(Self { seasons })
     }
 }
@@ -132,6 +134,9 @@ impl SeasonMetadata<PathBuf> {
 
             season_metadata.add_episode(episode_metadata);
         }
+
+        season_metadata.normal_episodes.sort();
+        season_metadata.special_episodes.sort();
 
         Ok(season_metadata.set_path(path.as_ref().to_path_buf()))
     }
