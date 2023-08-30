@@ -1,10 +1,9 @@
+use crate::{error::Result, metadata::NormalEpisodeMetadata, subtitle::SubtitleType};
 use std::{
     ffi::OsStr,
     path::Path,
     process::{Command, ExitStatus},
 };
-
-use crate::{error::Result, metadata::NormalEpisodeMetadata, subtitle::SubtitleType};
 
 pub trait Combinable {
     fn combine(
