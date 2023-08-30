@@ -1,5 +1,6 @@
 [workspace]
 
 members = [
-    "bilibili-extractor-lib"
+    "bilibili-extractor-lib",
+    "bilibili-extractor-cli"
 ]
