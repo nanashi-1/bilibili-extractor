@@ -1,7 +1,7 @@
 use std::path::Path;
 
 use bilibili_extractor_lib::metadata::{
-    DownloadFolder, NormalEpisodeMetadata, SeasonMetadata, SpecialEpisodeMetadata,
+    DownloadFolder, NormalEpisodeMetadata, SpecialEpisodeMetadata,
 };
 
 use crate::{colorer::Colorer, Context};
