@@ -1,4 +1,5 @@
-use crate::Context;
+use crate::colorer::Colorer;
+use crate::{create_spinner, Context};
 use bilibili_extractor_lib::combiner::Combinable;
 use bilibili_extractor_lib::error::Result;
 use bilibili_extractor_lib::metadata::{
@@ -12,12 +13,12 @@ use std::fs::{read_to_string, rename};
 use std::path::Path;
 use std::str::FromStr;
 
-pub struct Compiler<P: AsRef<Path>> {
-    context: Context<P>,
+pub struct Compiler<'a, P: AsRef<Path>> {
+    context: Context<'a, P>,
 }
 
-impl<P: AsRef<Path>> Compiler<P> {
-    pub fn new(context: Context<P>) -> Self {
+impl<'a, P: AsRef<Path>> Compiler<'a, P> {
+    pub fn new(context: Context<'a, P>) -> Self {
         Self { context }
     }
 
@@ -62,6 +63,11 @@ impl<P: AsRef<Path>> Compiler<P> {
         &self,
         episode: &NormalEpisodeMetadata<impl AsRef<Path>>,
     ) -> Result<()> {
+        let mut spinner = create_spinner(&format!(
+            "Compiling {} EP{:0>2}...",
+            episode.title, episode.episode
+        ));
+
         let subtitle_path = episode.get_subtitle_path(self.context.language)?;
         let binding = episode.path.as_ref().unwrap().as_ref().join("subtitle.ass");
         let output_subtitle_path = binding.to_str().ok_or("Path is not valid Unicode")?;
@@ -85,6 +91,11 @@ impl<P: AsRef<Path>> Compiler<P> {
             self.context.subtitle_type,
         )?;
 
+        spinner.stop_and_persist(
+            &"✔".color_as_success(),
+            format!("Compiled {} EP{:0>2}!", episode.title, episode.episode).color_as_success(),
+        );
+
         Ok(())
     }
 
@@ -92,6 +103,11 @@ impl<P: AsRef<Path>> Compiler<P> {
         &self,
         episode: &SpecialEpisodeMetadata<impl AsRef<Path>>,
     ) -> Result<()> {
+        let mut spinner = create_spinner(&format!(
+            "Compiling {} {}...",
+            episode.title, episode.episode_name
+        ));
+
         let subtitle_path = episode.get_subtitle_path(self.context.language)?;
         let binding = episode.path.as_ref().unwrap().as_ref().join("subtitle.ass");
         let output_subtitle_path = binding.to_str().ok_or("Path is not valid Unicode")?;
@@ -114,6 +130,11 @@ impl<P: AsRef<Path>> Compiler<P> {
             self.context.language,
             self.context.subtitle_type,
         )?;
+
+        spinner.stop_and_persist(
+            &"✔".color_as_success(),
+            format!("Compiled {} {}!", episode.title, episode.episode_name).color_as_success(),
+        );
 
         Ok(())
     }
