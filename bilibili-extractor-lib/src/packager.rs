@@ -38,7 +38,7 @@ impl<P: AsRef<Path>> Packager<P> {
     }
 
     /// Package a season.
-    pub fn save_season(&self, season_metadata: SeasonMetadata<impl AsRef<Path>>) -> Result<()> {
+    pub fn save_season(&self, season_metadata: &SeasonMetadata<impl AsRef<Path>>) -> Result<()> {
         season_metadata
             .normal_episodes
             .iter()
