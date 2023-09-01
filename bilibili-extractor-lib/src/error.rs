@@ -37,3 +37,14 @@ impl From<&str> for Error {
         Self::FromString(value.into())
     }
 }
+
+impl ToString for Error {
+    fn to_string(&self) -> String {
+        match self {
+            Error::IOError(e) => format!("IOError: {e}"),
+            Error::SerdeJSONError(e) => format!("SerdeJSONError: {e}"),
+            Error::ParseIntError(e) => format!("ParseIntError: {e}"),
+            Error::FromString(e) => format!("{e}"),
+        }
+    }
+}
