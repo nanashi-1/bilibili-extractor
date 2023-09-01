@@ -1,6 +1,6 @@
 # bilibili-extractor
 
-[![Rust Tests](https://github.com/nanashi-1/bilibili-extractor/actions/workflows/rust.yml/badge.svg)](https://github.com/nanashi-1/bilibili-extractor/actions/workflows/rust.yml)
+[![Tests](https://github.com/nanashi-1/bilibili-extractor/actions/workflows/test.yml/badge.svg)](https://github.com/nanashi-1/bilibili-extractor/actions/workflows/test.yml)
 
 This will extract downloaded videos inside Bilibili. This is the successor of [bilibili-tools](https://github.com/nanashi-1/bilibili-tools).
 
