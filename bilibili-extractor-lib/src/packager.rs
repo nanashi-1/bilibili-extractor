@@ -41,15 +41,11 @@ impl<P: AsRef<Path>> Packager<P> {
     pub fn save_season(&self, season_metadata: &SeasonMetadata<impl AsRef<Path>>) -> Result<()> {
         season_metadata
             .normal_episodes
-            .iter()
-            .map(|e| Ok(self.save_normal_episode(e)?))
-            .collect::<Result<_>>()?;
+            .iter().try_for_each(|e| self.save_normal_episode(e))?;
 
         season_metadata
             .special_episodes
-            .iter()
-            .map(|e| Ok(self.save_special_episode(e)?))
-            .collect::<Result<_>>()?;
+            .iter().try_for_each(|e| self.save_special_episode(e))?;
 
         Ok(())
     }

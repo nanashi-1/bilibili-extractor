@@ -7,7 +7,7 @@ use std::{convert::AsRef, path::Path};
 pub struct Lister;
 
 impl Lister {
-    pub fn list_seasons(&self, seasons: &Vec<SeasonMetadata<impl AsRef<Path>>>) {
+    pub fn list_seasons(&self, seasons: &[SeasonMetadata<impl AsRef<Path>>]) {
         seasons.iter().enumerate().for_each(|(i, s)| {
             println!(
                 "{} {}",
@@ -34,13 +34,13 @@ impl Lister {
         })
     }
 
-    pub fn list_normal_episodes(&self, episodes: &Vec<NormalEpisodeMetadata<impl AsRef<Path>>>) {
+    pub fn list_normal_episodes(&self, episodes: &[NormalEpisodeMetadata<impl AsRef<Path>>]) {
         episodes
             .iter()
             .for_each(|e| println!("        {} EP{:0>2}", e.title, e.episode))
     }
 
-    pub fn list_special_episodes(&self, episodes: &Vec<SpecialEpisodeMetadata<impl AsRef<Path>>>) {
+    pub fn list_special_episodes(&self, episodes: &[SpecialEpisodeMetadata<impl AsRef<Path>>]) {
         episodes
             .iter()
             .for_each(|e| println!("        {} {}", e.title, e.episode_name))

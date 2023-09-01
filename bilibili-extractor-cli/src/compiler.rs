@@ -22,7 +22,7 @@ impl<'a, P: AsRef<Path>> Compiler<'a, P> {
         Self { context }
     }
 
-    pub fn compile_seasons(&self, seasons: &Vec<SeasonMetadata<impl AsRef<Path>>>) -> Result<()> {
+    pub fn compile_seasons(&self, seasons: &[SeasonMetadata<impl AsRef<Path>>]) -> Result<()> {
         seasons.iter().try_for_each(|s| self.compile_season(s))?;
 
         Ok(())
@@ -39,7 +39,7 @@ impl<'a, P: AsRef<Path>> Compiler<'a, P> {
 
     pub fn compile_normal_episodes(
         &self,
-        episodes: &Vec<NormalEpisodeMetadata<impl AsRef<Path>>>,
+        episodes: &[NormalEpisodeMetadata<impl AsRef<Path>>],
     ) -> Result<()> {
         episodes
             .iter()
@@ -50,7 +50,7 @@ impl<'a, P: AsRef<Path>> Compiler<'a, P> {
 
     pub fn compile_special_episodes(
         &self,
-        episodes: &Vec<SpecialEpisodeMetadata<impl AsRef<Path>>>,
+        episodes: &[SpecialEpisodeMetadata<impl AsRef<Path>>],
     ) -> Result<()> {
         episodes
             .iter()

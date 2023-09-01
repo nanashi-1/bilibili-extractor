@@ -97,7 +97,7 @@ impl JsonSubtitle {
             .ok_or("Subtitle directory is empty.")??
             .path();
 
-        Ok(Self::new_from_path(subtitle_path)?)
+        Self::new_from_path(subtitle_path)
     }
 
     /// Fetch the json subtitle of a special episode.
@@ -119,7 +119,7 @@ impl JsonSubtitle {
             .ok_or("Subtitle directory is empty.")??
             .path();
 
-        Ok(Self::new_from_path(subtitle_path)?)
+        Self::new_from_path(subtitle_path)
     }
 
     /// Create a `JsonSubtitle` from path.

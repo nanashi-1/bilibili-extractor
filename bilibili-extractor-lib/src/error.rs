@@ -44,7 +44,7 @@ impl ToString for Error {
             Error::IOError(e) => format!("IOError: {e}"),
             Error::SerdeJSONError(e) => format!("SerdeJSONError: {e}"),
             Error::ParseIntError(e) => format!("ParseIntError: {e}"),
-            Error::FromString(e) => format!("{e}"),
+            Error::FromString(e) => e.to_string(),
         }
     }
 }

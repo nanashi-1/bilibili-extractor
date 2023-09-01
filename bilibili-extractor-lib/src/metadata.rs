@@ -149,7 +149,7 @@ impl<P: AsRef<Path>> EpisodeMetadata<P> {
     /// Create an episode metadata from path.
     pub fn new_from_path(path: P) -> Result<Self> {
         let json =
-            serde_json::from_str::<JsonEntry>(&read_to_string(&path.as_ref().join("entry.json"))?)?;
+            serde_json::from_str::<JsonEntry>(&read_to_string(path.as_ref().join("entry.json"))?)?;
 
         Ok(Self::from(json).set_path(path))
     }
