@@ -9,14 +9,14 @@ use std::{
 };
 
 /// Packages seasons and episodes.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Packager<P: AsRef<Path>> {
     pub output_path: P,
     pub config: PackagerConfig,
 }
 
 /// Config used for packaging.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord, Default)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord, Default)]
 pub struct PackagerConfig {
     pub copy: bool,
 }
