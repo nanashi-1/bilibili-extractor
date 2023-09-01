@@ -1,13 +1,6 @@
-[package]
-name = "bilibili-extractor"
-version = "0.1.0"
-edition = "2021"
+[workspace]
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[dependencies]
-md5 = "0.7.0"
-rsubs-lib = "0.1.7"
-serde = "1.0.163"
-serde_derive = "1.0.163"
-serde_json = "1.0.96"
+members = [
+    "bilibili-extractor-lib",
+    "bilibili-extractor-cli"
+]
