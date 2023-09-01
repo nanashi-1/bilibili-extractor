@@ -23,7 +23,7 @@ use std::{collections::HashMap, fs, path::Path};
 /// # Convert to other subtitle format
 ///
 /// ```
-/// use bilibili_extractor_lib::subtitle_converter::{JsonSubtitle, JsonSubtitleBody};
+/// use bilibili_extractor_lib::subtitle::{JsonSubtitle, JsonSubtitleBody};
 ///
 /// let json_subtitle = JsonSubtitle {
 ///     body: vec![JsonSubtitleBody {
