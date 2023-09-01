@@ -9,7 +9,7 @@ use std::{
 };
 
 /// Packages seasons and episodes.
-#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, Copy, Default, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Packager<P: AsRef<Path>> {
     pub output_path: P,
     pub config: PackagerConfig,
