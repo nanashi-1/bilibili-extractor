@@ -1,4 +1,4 @@
-use crate::{colorer::Colorer, Context};
+use crate::colorer::Colorer;
 use bilibili_extractor_lib::metadata::{
     NormalEpisodeMetadata, SeasonMetadata, SpecialEpisodeMetadata,
 };
@@ -7,10 +7,6 @@ use std::{convert::AsRef, path::Path};
 pub struct Lister;
 
 impl Lister {
-    pub fn new() -> Self {
-        Self
-    }
-
     pub fn list_seasons(&self, seasons: &Vec<SeasonMetadata<impl AsRef<Path>>>) {
         seasons.iter().enumerate().for_each(|(i, s)| {
             println!(
