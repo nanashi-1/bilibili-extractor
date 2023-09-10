@@ -147,7 +147,7 @@ In case you don't have it installed:
 
 ## Installation
 
-    cargo install --git https://github.com/nanashi-1/bilibili-extractor
+    cargo install bilibili-extractor-cli
 
 ## License
 
