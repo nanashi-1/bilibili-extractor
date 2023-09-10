@@ -1,6 +1,7 @@
 [package]
 name = "bilibili-extractor-lib"
 version = "0.1.0"
+edition = "2021"
 description = "Tools to extract and compile bilibili downloads."
 license = "MIT"
 keywords = ["bilibili"]
