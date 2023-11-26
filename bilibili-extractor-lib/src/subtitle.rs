@@ -18,6 +18,91 @@ use rsubs_lib::{
 use serde::{Deserialize, Serialize};
 use std::{collections::HashMap, fs, path::Path};
 
+macro_rules! new_ssa_subtitile {
+    ($value: expr) => {{
+        let mut ass_info = HashMap::new();
+        ass_info.insert("Title".into(), "Bilibili Subtitle".into());
+        ass_info.insert("ScriptType".into(), "v4.00+".into());
+        ass_info.insert("WrapStyle".into(), "0".into());
+        ass_info.insert("ScaledBorderAndShadow".into(), "yes".into());
+        ass_info.insert("YCbCr Matrix".into(), "TV.601".into());
+        ass_info.insert("PlayResX".into(), "1920".into());
+        ass_info.insert("PlayResY".into(), "1080".into());
+
+        let ass_styles = SSAStyle {
+            name: "Default".into(),
+            fontname: "Noto Sans".into(),
+            fontsize: 100.,
+            firstcolor: SSAColor(Color {
+                a: 0,
+                r: 255,
+                g: 255,
+                b: 255,
+            }),
+            secondcolor: SSAColor(Color {
+                r: 0,
+                g: 255,
+                b: 255,
+                a: 0,
+            }),
+            outlinecolor: SSAColor(Color {
+                r: 8,
+                g: 34,
+                b: 0,
+                a: 0,
+            }),
+            backgroundcolor: SSAColor(Color {
+                r: 0,
+                g: 0,
+                b: 0,
+                a: 127,
+            }),
+            bold: false,
+            italic: false,
+            unerline: false,
+            strikeout: false,
+            scalex: 100.,
+            scaley: 100.,
+            spacing: 0.,
+            angle: 0.,
+            borderstyle: 1,
+            outline: 5.,
+            shadow: 1.5,
+            alignment: Alignment::BottomCenter,
+            lmargin: 96,
+            rmargin: 96,
+            vmargin: 65,
+            encoding: 1,
+            ..Default::default()
+        };
+
+        let mut ass_event = vec![];
+
+        $value.body.iter().for_each(|b| {
+            ass_event.push(SSAEvent {
+                style: "Default".into(),
+                line_start: Time {
+                    ms: (b.from * 1000.) as u32,
+                    ..Default::default()
+                },
+                line_end: Time {
+                    ms: (b.to * 1000.) as u32,
+                    ..Default::default()
+                },
+                line_text: b.content.clone(),
+                ..Default::default()
+            })
+        });
+
+        SSAFile {
+            events: ass_event,
+            styles: vec![ass_styles],
+            info: ass_info,
+            format: ".ass".into(),
+        }
+    }};
+}
+
 /// Contains information inside a Bilibili JSON subtitle.
 ///
 /// # Convert to other subtitle format
@@ -152,171 +237,15 @@ impl JsonSubtitle {
 
 impl From<JsonSubtitle> for Subtitle {
     fn from(value: JsonSubtitle) -> Self {
-        let mut ass_info = HashMap::new();
-        ass_info.insert("Title".into(), "Bilibili Subtitle".into());
-        ass_info.insert("ScriptType".into(), "v4.00+".into());
-        ass_info.insert("WrapStyle".into(), "0".into());
-        ass_info.insert("ScaledBorderAndShadow".into(), "yes".into());
-        ass_info.insert("YCbCr Matrix".into(), "TV.601".into());
-        ass_info.insert("PlayResX".into(), "1920".into());
-        ass_info.insert("PlayResY".into(), "1080".into());
+        let ssa_subtitle = new_ssa_subtitile!(value);
 
-        let ass_styles = SSAStyle {
-            name: "Default".into(),
-            fontname: "Noto Sans".into(),
-            fontsize: 100.,
-            firstcolor: SSAColor(Color {
-                a: 0,
-                r: 255,
-                g: 255,
-                b: 255,
-            }),
-            secondcolor: SSAColor(Color {
-                r: 0,
-                g: 255,
-                b: 255,
-                a: 0,
-            }),
-            outlinecolor: SSAColor(Color {
-                r: 8,
-                g: 34,
-                b: 0,
-                a: 0,
-            }),
-            backgroundcolor: SSAColor(Color {
-                r: 0,
-                g: 0,
-                b: 0,
-                a: 127,
-            }),
-            bold: false,
-            italic: false,
-            unerline: false,
-            strikeout: false,
-            scalex: 100.,
-            scaley: 100.,
-            spacing: 0.,
-            angle: 0.,
-            borderstyle: 1,
-            outline: 5.,
-            shadow: 1.5,
-            alignment: Alignment::BottomCenter,
-            lmargin: 96,
-            rmargin: 96,
-            vmargin: 65,
-            encoding: 1,
-            ..Default::default()
-        };
-
-        let mut ass_event = vec![];
-
-        value.body.iter().for_each(|b| {
-            ass_event.push(SSAEvent {
-                style: "Default".into(),
-                line_start: Time {
-                    ms: (b.from * 1000.) as u32,
-                    ..Default::default()
-                },
-                line_end: Time {
-                    ms: (b.to * 1000.) as u32,
-                    ..Default::default()
-                },
-                line_text: b.content.clone(),
-                ..Default::default()
-            })
-        });
-
-        Subtitle::SSA(Some(SSAFile {
-            events: ass_event,
-            styles: vec![ass_styles],
-            info: ass_info,
-            format: ".ass".into(),
-        }))
+        Subtitle::SSA(Some(ssa_subtitle))
     }
 }
 
 impl From<JsonSubtitle> for SSAFile {
     fn from(value: JsonSubtitle) -> Self {
-        let mut ass_info = HashMap::new();
-        ass_info.insert("Title".into(), "Bilibili Subtitle".into());
-        ass_info.insert("ScriptType".into(), "v4.00+".into());
-        ass_info.insert("WrapStyle".into(), "0".into());
-        ass_info.insert("ScaledBorderAndShadow".into(), "yes".into());
-        ass_info.insert("YCbCr Matrix".into(), "TV.601".into());
-        ass_info.insert("PlayResX".into(), "1920".into());
-        ass_info.insert("PlayResY".into(), "1080".into());
-
-        let ass_styles = SSAStyle {
-            name: "Default".into(),
-            fontname: "Noto Sans".into(),
-            fontsize: 100.,
-            firstcolor: SSAColor(Color {
-                a: 0,
-                r: 255,
-                g: 255,
-                b: 255,
-            }),
-            secondcolor: SSAColor(Color {
-                r: 0,
-                g: 255,
-                b: 255,
-                a: 0,
-            }),
-            outlinecolor: SSAColor(Color {
-                r: 8,
-                g: 34,
-                b: 0,
-                a: 0,
-            }),
-            backgroundcolor: SSAColor(Color {
-                r: 0,
-                g: 0,
-                b: 0,
-                a: 127,
-            }),
-            bold: false,
-            italic: false,
-            unerline: false,
-            strikeout: false,
-            scalex: 100.,
-            scaley: 100.,
-            spacing: 0.,
-            angle: 0.,
-            borderstyle: 1,
-            outline: 5.,
-            shadow: 1.5,
-            alignment: Alignment::BottomCenter,
-            lmargin: 96,
-            rmargin: 96,
-            vmargin: 65,
-            encoding: 1,
-            ..Default::default()
-        };
-
-        let mut ass_event = vec![];
-
-        value.body.iter().for_each(|b| {
-            ass_event.push(SSAEvent {
-                style: "Default".into(),
-                line_start: Time {
-                    ms: (b.from * 1000.) as u32,
-                    ..Default::default()
-                },
-                line_end: Time {
-                    ms: (b.to * 1000.) as u32,
-                    ..Default::default()
-                },
-                line_text: b.content.clone(),
-                ..Default::default()
-            })
-        });
-
-        SSAFile {
-            events: ass_event,
-            styles: vec![ass_styles],
-            info: ass_info,
-            format: ".ass".into(),
-        }
+        new_ssa_subtitile!(value)
     }
 }
 

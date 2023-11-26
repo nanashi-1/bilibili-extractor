@@ -1,50 +1,46 @@
+macro_rules! create_error_enum {
+    ($($error_name: ident, $error: path);*) => {
+        #[derive(Debug)]
+        pub enum Error {
+            $($error_name($error),)*
+            FromString(String),
+        }
+
+        $(
+            impl From<$error> for Error {
+                fn from(value: $error) -> Self {
+                    Self::$error_name(value)
+                }
+            }
+         )*
+
+        impl From<String> for Error {
+            fn from(value: String) -> Self {
+                Self::FromString(value)
+            }
+        }
+
+        impl From<&str> for Error {
+            fn from(value: &str) -> Self {
+                Self::FromString(value.to_string())
+            }
+        }
+
+        impl ToString for Error {
+            fn to_string(&self) -> String {
+                match self {
+                    $(Error::$error_name(e) => format!("{}: {e}", stringify!($error_name)),)*
+                    Error::FromString(e) => e.to_string(),
+                }
+            }
+        }
+    };
+}
+
 pub type Result<T> = std::result::Result<T, Error>;
 
-#[derive(Debug)]
-pub enum Error {
-    IOError(std::io::Error),
-    SerdeJSONError(serde_json::Error),
-    ParseIntError(std::num::ParseIntError),
-    FromString(String),
-}
-
-impl From<std::io::Error> for Error {
-    fn from(value: std::io::Error) -> Self {
-        Self::IOError(value)
-    }
-}
-
-impl From<serde_json::Error> for Error {
-    fn from(value: serde_json::Error) -> Self {
-        Self::SerdeJSONError(value)
-    }
-}
-
-impl From<std::num::ParseIntError> for Error {
-    fn from(value: std::num::ParseIntError) -> Self {
-        Self::ParseIntError(value)
-    }
-}
-
-impl From<String> for Error {
-    fn from(value: String) -> Self {
-        Self::FromString(value)
-    }
-}
-
-impl From<&str> for Error {
-    fn from(value: &str) -> Self {
-        Self::FromString(value.into())
-    }
-}
-
-impl ToString for Error {
-    fn to_string(&self) -> String {
-        match self {
-            Error::IOError(e) => format!("IOError: {e}"),
-            Error::SerdeJSONError(e) => format!("SerdeJSONError: {e}"),
-            Error::ParseIntError(e) => format!("ParseIntError: {e}"),
-            Error::FromString(e) => e.to_string(),
-        }
-    }
-}
+create_error_enum!(
+IOError, std::io::Error;
+SerdeJSONError, serde_json::Error;
+ParseIntError, std::num::ParseIntError
+);
