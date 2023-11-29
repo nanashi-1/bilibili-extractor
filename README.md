@@ -147,7 +147,9 @@ In case you don't have it installed:
 
 ## Installation
 
-    cargo install bilibili-extractor-cli
+    cargo install bilibili-extractor
+
+> **_NOTE:_** The binary will be installed as `bilibili_extractor_cli`. Run `bilibili_extractor_cli help` for usage instructions.
 
 ## License
 

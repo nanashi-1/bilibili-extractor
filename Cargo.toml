@@ -1,6 +1,23 @@
-[workspace]
+[package]
+name = "bilibili-extractor"
+version = "0.1.0"
+edition = "2021"
+description = "Tools to extract and compile bilibili downloads."
+license = "MIT"
+keywords = ["bilibili"]
+authors = ["nanashi-1"]
 
-members = [
-    "bilibili-extractor-lib",
-    "bilibili-extractor-cli"
-]
+[lib]
+name = "bilibili_extractor_lib"
+path = "src/lib.rs"
+
+[[bin]]
+name = "bilibili_extractor_cli"
+path = "src/cli/main.rs"
+
+[dependencies]
+clap = { version = "4.4.10", features = ["derive"] }
+rsubs-lib = "0.1.8"
+serde = "1.0.188"
+serde_json = "1.0.105"
+spinners = "4.1.1"
