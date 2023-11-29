@@ -9,6 +9,21 @@ use std::{
     process::{Command, ExitStatus},
 };
 
+macro_rules! get_file {
+    ($file_name: literal, $episode_ident: ident, $combinable: expr) => {
+        $combinable
+            .path
+            .as_ref()
+            .ok_or(format!(
+                "Episode {} of {} doesn't have a path.",
+                $combinable.$episode_ident, $combinable.title
+            ))?
+            .as_ref()
+            .join(&$combinable.type_tag)
+            .join($file_name)
+    };
+}
+
 pub trait Combinable {
     /// Combine the audio, video, and subtitle using `ffmpeg`.
     fn combine(
@@ -26,32 +41,11 @@ impl<P: AsRef<Path>> Combinable for NormalEpisodeMetadata<P> {
         subtitle_language: &str,
         subtitle_type: SubtitleType,
     ) -> Result<ExitStatus> {
-        let video_path = self
-            .path
-            .as_ref()
-            .ok_or(format!(
-                "Episode {} of {} doesn't have a path.",
-                self.episode, self.title
-            ))?
-            .as_ref()
-            .join(&self.type_tag)
-            .join("video.m4s");
+        let video_path = get_file!("video.m4s", episode, self);
 
-        let audio_path = self
-            .path
-            .as_ref()
-            .unwrap()
-            .as_ref()
-            .join(&self.type_tag)
-            .join("audio.m4s");
+        let audio_path = get_file!("audio.m4s", episode, self);
 
-        let output_path = self
-            .path
-            .as_ref()
-            .unwrap()
-            .as_ref()
-            .join(&self.type_tag)
-            .join("episode.mkv");
+        let output_path = get_file!("episode.mkv", episode, self);
 
         let mut binding = Command::new("ffmpeg");
         binding
@@ -88,32 +82,11 @@ impl<P: AsRef<Path>> Combinable for SpecialEpisodeMetadata<P> {
         subtitle_language: &str,
         subtitle_type: SubtitleType,
     ) -> Result<ExitStatus> {
-        let video_path = self
-            .path
-            .as_ref()
-            .ok_or(format!(
-                "{} of {} doesn't have a path.",
-                self.episode_name, self.title
-            ))?
-            .as_ref()
-            .join(&self.type_tag)
-            .join("video.m4s");
+        let video_path = get_file!("video.m4s", episode_name, self);
 
-        let audio_path = self
-            .path
-            .as_ref()
-            .unwrap()
-            .as_ref()
-            .join(&self.type_tag)
-            .join("audio.m4s");
+        let audio_path = get_file!("audio.m4s", episode_name, self);
 
-        let output_path = self
-            .path
-            .as_ref()
-            .unwrap()
-            .as_ref()
-            .join(&self.type_tag)
-            .join("episode.mkv");
+        let output_path = get_file!("episode.mkv", episode_name, self);
 
         let mut binding = Command::new("ffmpeg");
         binding
