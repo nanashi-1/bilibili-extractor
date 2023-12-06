@@ -29,6 +29,15 @@ impl<'a, P: AsRef<Path>> Compiler<'a, P> {
     }
 
     pub fn compile_season(&self, season_metadata: &SeasonMetadata<impl AsRef<Path>>) -> Result<()> {
+        #[cfg(debug_assertions)]
+        println!(
+            "{} Season Name: {:?}, Season Path: {:?}, Episode Count: {:?}\n",
+            "DEBUG:".color_as_warning(),
+            season_metadata.title,
+            season_metadata.path.as_ref().unwrap().as_ref(),
+            season_metadata.normal_episodes.len() + season_metadata.special_episodes.len()
+        );
+
         self.compile_normal_episodes(&season_metadata.normal_episodes)?;
         self.compile_special_episodes(&season_metadata.special_episodes)?;
 
@@ -63,6 +72,15 @@ impl<'a, P: AsRef<Path>> Compiler<'a, P> {
         &self,
         episode: &NormalEpisodeMetadata<impl AsRef<Path>>,
     ) -> Result<()> {
+        #[cfg(debug_assertions)]
+        println!(
+            "{} Episode Type: \"Normal\", Episode: {:?}, Episode Path: {:?}, Subtitle Format: \"{:?}\"",
+            "DEBUG:".color_as_warning(),
+            episode.episode,
+            episode.path.as_ref().unwrap().as_ref(),
+            SubtitleFormat::get_normal_episode_subtitle_type(episode, self.context.language)?
+        );
+
         let mut spinner = create_spinner(&format!(
             "Compiling {} EP{:0>2}...",
             episode.title, episode.episode
@@ -96,6 +114,9 @@ impl<'a, P: AsRef<Path>> Compiler<'a, P> {
             format!("Compiled {} EP{:0>2}!", episode.title, episode.episode).color_as_success(),
         );
 
+        #[cfg(debug_assertions)]
+        println!();
+
         Ok(())
     }
 
@@ -103,6 +124,15 @@ impl<'a, P: AsRef<Path>> Compiler<'a, P> {
         &self,
         episode: &SpecialEpisodeMetadata<impl AsRef<Path>>,
     ) -> Result<()> {
+        #[cfg(debug_assertions)]
+        println!(
+            "{} Episode Type: \"Special\", Episode Name: {:?}, Episode Path: {:?}, Subtitle Format: \"{:?}\"",
+            "DEBUG:".color_as_warning(),
+            episode.episode_name,
+            episode.path.as_ref().unwrap().as_ref(),
+            SubtitleFormat::get_special_episode_subtitle_type(episode, self.context.language)?
+        );
+
         let mut spinner = create_spinner(&format!(
             "Compiling {} {}...",
             episode.title, episode.episode_name
@@ -135,6 +165,9 @@ impl<'a, P: AsRef<Path>> Compiler<'a, P> {
             &"✔".color_as_success(),
             format!("Compiled {} {}!", episode.title, episode.episode_name).color_as_success(),
         );
+
+        #[cfg(debug_assertions)]
+        println!();
 
         Ok(())
     }
