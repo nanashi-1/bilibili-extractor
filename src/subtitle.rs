@@ -6,10 +6,7 @@ use rsubs_lib::{
     srt::{SRTFile, SRTLine},
     ssa::{SSAEvent, SSAFile, SSAStyle},
     util::{
-        color::{
-            Alignment, Color,
-            ColorType::{self, SSAColor},
-        },
+        color::{Alignment, Color, ColorType},
         time::Time,
     },
     vtt::{VTTFile, VTTLine, VTTStyle},
