@@ -28,13 +28,11 @@ macro_rules! new_ssa_subtitile {
 
         let ass_styles = SSAStyle {
             name: "Default".into(),
-            fontname: "Noto Sans".into(),
-            fontsize: 50.,
+            fontsize: 70.,
             bold: false, // For some reason `rsubs_lib` binds `false` with `-1` and true with `0`,
             // but SSA format uses `-1` for `true` and `0` with false.
             borderstyle: 1,
-            outline: 2.,
-            shadow: 0.,
+            outline: 5.,
             alignment: Alignment::BottomCenter,
             vmargin: 30,
             ..Default::default()
