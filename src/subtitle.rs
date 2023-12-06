@@ -32,47 +32,14 @@ macro_rules! new_ssa_subtitile {
         let ass_styles = SSAStyle {
             name: "Default".into(),
             fontname: "Noto Sans".into(),
-            fontsize: 100.,
-            firstcolor: SSAColor(Color {
-                a: 0,
-                r: 255,
-                g: 255,
-                b: 255,
-            }),
-            secondcolor: SSAColor(Color {
-                r: 0,
-                g: 255,
-                b: 255,
-                a: 0,
-            }),
-            outlinecolor: SSAColor(Color {
-                r: 8,
-                g: 34,
-                b: 0,
-                a: 0,
-            }),
-            backgroundcolor: SSAColor(Color {
-                r: 0,
-                g: 0,
-                b: 0,
-                a: 127,
-            }),
-            bold: false,
-            italic: false,
-            unerline: false,
-            strikeout: false,
-            scalex: 100.,
-            scaley: 100.,
-            spacing: 0.,
-            angle: 0.,
+            fontsize: 50.,
+            bold: false, // For some reason `rsubs_lib` binds `false` with `-1` and true with `0`,
+            // but SSA format uses `-1` for `true` and `0` with false.
             borderstyle: 1,
-            outline: 5.,
-            shadow: 1.5,
+            outline: 2.,
+            shadow: 0.,
             alignment: Alignment::BottomCenter,
-            lmargin: 96,
-            rmargin: 96,
-            vmargin: 65,
-            encoding: 1,
+            vmargin: 30,
             ..Default::default()
         };
 
