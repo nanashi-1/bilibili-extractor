@@ -53,7 +53,7 @@ macro_rules! new_ssa_subtitile {
                     ms: (b.to * 1000.) as u32,
                     ..Default::default()
                 },
-                line_text: b.content.clone(),
+                line_text: b.content.clone().replace("\n", "\\N"),
                 ..Default::default()
             })
         });
