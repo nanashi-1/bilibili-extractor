@@ -15,7 +15,7 @@ mod colorer;
 mod compiler;
 mod lister;
 
-#[derive(Clone, Copy, Default)]
+#[derive(Debug, Clone, Copy, Default)]
 pub struct Context<'a, P: AsRef<Path>> {
     pub language: &'a str,
     pub subtitle_type: SubtitleType,
@@ -79,6 +79,12 @@ pub fn create_spinner(message: &str) -> Spinner {
 }
 
 fn main() {
+    #[cfg(debug_assertions)]
+    {
+        println!("{}", "Debug Build!".color_as_warning());
+        println!("More information will be printed.\n");
+    }
+
     let cli = Cli::parse();
 
     match cli.subcommand {
@@ -87,6 +93,13 @@ fn main() {
                 input_path: &input,
                 ..Default::default()
             };
+
+            #[cfg(debug_assertions)]
+            println!(
+                "{} List Context: {:?}\n",
+                "DEBUG:".color_as_warning(),
+                context
+            );
 
             if let Err(e) = list(context) {
                 println!("{}", e.to_string().color_as_error())
@@ -111,6 +124,13 @@ fn main() {
                 },
                 input_path: &input,
             };
+
+            #[cfg(debug_assertions)]
+            println!(
+                "{} Compile Context: {:?}\n",
+                "DEBUG:".color_as_warning(),
+                context
+            );
 
             if let Err(e) = compile(context) {
                 println!("{}", e.to_string().color_as_error())
