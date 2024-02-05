@@ -29,22 +29,23 @@ impl Lister {
                 );
             }
 
-            if s.normal_episodes.is_empty() && s.special_episodes.is_empty() {
-                println!("{}", "    No Episodes!!".color_as_error());
-            } else if !s.normal_episodes.is_empty() && s.special_episodes.is_empty() {
-                println!("{}", "    Episodes:".color_as_success());
-                self.list_normal_episodes(&s.normal_episodes);
-            } else if s.normal_episodes.is_empty() && !s.special_episodes.is_empty() {
-                println!("{}", "    Episodes:".color_as_success());
-                self.list_special_episodes(&s.special_episodes);
-            } else {
-                println!("{}", "    Normal Episodes:\n".color_as_success());
-                self.list_normal_episodes(&s.normal_episodes);
-                println!("{}", "    Special Episodes:\n".color_as_success());
-                self.list_special_episodes(&s.special_episodes);
+            match (s.normal_episodes.is_empty(), s.special_episodes.is_empty()) {
+                (true, true) => println!("{}", "    No Episodes!!".color_as_error()),
+                (false, true) => {
+                    println!("{}", "    Episodes:".color_as_success());
+                    self.list_normal_episodes(&s.normal_episodes);
+                }
+                (true, false) => {
+                    println!("{}", "    Episodes:".color_as_success());
+                    self.list_special_episodes(&s.special_episodes);
+                }
+                _ => {
+                    println!("{}", "    Normal Episodes:\n".color_as_success());
+                    self.list_normal_episodes(&s.normal_episodes);
+                    println!("{}", "    Special Episodes:\n".color_as_success());
+                    self.list_special_episodes(&s.special_episodes);
+                }
             }
-
-            println!()
         })
     }
 
