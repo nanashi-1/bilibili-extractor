@@ -68,6 +68,7 @@ impl<P: AsRef<Path>> Combinable for NormalEpisodeMetadata<P> {
                 .args(["-map", "1:a:0"])
                 .args(["-map", "2"])
                 .args(["-metadata:s:s:0", &format!("language={subtitle_language}")])
+                .args(["-disposition:s:s:0", "default"])
                 .args(["-codec", "copy"])
                 .arg(output_path)
                 .status()?),
