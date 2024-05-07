@@ -5,7 +5,7 @@ use crate::{
 use serde::{Deserialize, Serialize};
 use std::{
     fs::{copy, create_dir_all, rename},
-    path::Path,
+    path::PathBuf,
 };
 
 macro_rules! package_episode {
@@ -14,7 +14,6 @@ macro_rules! package_episode {
             $episode_video_path,
             $packager
                 .output_path
-                .as_ref()
                 .join(&$episode_metadata.title)
                 .join(format!(
                     $name_format,
@@ -82,9 +81,9 @@ macro_rules! get_episode_video_path {
 }
 
 /// Packages seasons and episodes.
-#[derive(Debug, Clone, Copy, Default, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
-pub struct Packager<P: AsRef<Path>> {
-    pub output_path: P,
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
+pub struct Packager {
+    pub output_path: PathBuf,
     pub config: PackagerConfig,
 }
 
@@ -94,9 +93,11 @@ pub struct PackagerConfig {
     pub copy: bool,
 }
 
-impl<P: AsRef<Path>> Packager<P> {
+impl Packager {
     /// Create a new `Packager`.
-    pub fn new(output_path: P) -> Result<Self> {
+    pub fn new(output_path: impl Into<PathBuf>) -> Result<Self> {
+        let output_path = output_path.into();
+
         create_dir_all(&output_path)?;
 
         Ok(Self {
@@ -123,7 +124,7 @@ impl<P: AsRef<Path>> Packager<P> {
     /// Package episode.
     pub fn save_episode(&self, episode_metadata: &EpisodeMetadata) -> Result<()> {
         let episode_video_path = get_episode_video_path!(episode, episode_metadata);
-        create_dir_all(self.output_path.as_ref().join(&episode_metadata.title))?;
+        create_dir_all(self.output_path.join(&episode_metadata.title))?;
 
         if self.config.copy {
             match episode_metadata.episode {

@@ -1,7 +1,4 @@
-use crate::{
-    error::{Result},
-    metadata::EpisodeMetadata,
-};
+use crate::{error::Result, metadata::EpisodeMetadata};
 use rsubs_lib::{
     srt::{SRTFile, SRTLine},
     ssa::{SSAEvent, SSAFile, SSAStyle},

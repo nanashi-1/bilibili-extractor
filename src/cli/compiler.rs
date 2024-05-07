@@ -6,17 +6,15 @@ use bilibili_extractor_lib::metadata::{EpisodeId, EpisodeMetadata, SeasonMetadat
 use bilibili_extractor_lib::subtitle::{JsonSubtitle, SubtitleFormat};
 use rsubs_lib::srt::SRTFile;
 use rsubs_lib::vtt::VTTFile;
-use std::convert::AsRef;
 use std::fs::{read_to_string, rename};
-use std::path::Path;
 use std::str::FromStr;
 
-pub struct Compiler<'a, P: AsRef<Path>> {
-    context: Context<'a, P>,
+pub struct Compiler {
+    context: Context,
 }
 
-impl<'a, P: AsRef<Path>> Compiler<'a, P> {
-    pub fn new(context: Context<'a, P>) -> Self {
+impl Compiler {
+    pub fn new(context: Context) -> Self {
         Self { context }
     }
 
@@ -78,7 +76,7 @@ impl<'a, P: AsRef<Path>> Compiler<'a, P> {
             "DEBUG:".color_as_warning(),
             episode.episode,
             episode.path,
-            SubtitleFormat::get_episode_subtitle_type(episode, self.context.language)?
+            SubtitleFormat::get_episode_subtitle_type(episode, &self.context.language)?
         );
 
         let mut spinner = create_spinner(&format!(
@@ -86,11 +84,11 @@ impl<'a, P: AsRef<Path>> Compiler<'a, P> {
             episode.title, episode.episode
         ));
 
-        let subtitle_path = episode.get_subtitle_path(self.context.language)?;
+        let subtitle_path = episode.get_subtitle_path(&self.context.language)?;
         let binding = episode.path.join("subtitle.ass");
         let output_subtitle_path = binding.to_str().ok_or("Path is not valid Unicode")?;
 
-        match SubtitleFormat::get_episode_subtitle_type(episode, self.context.language)? {
+        match SubtitleFormat::get_episode_subtitle_type(episode, &self.context.language)? {
             SubtitleFormat::Json => JsonSubtitle::new_from_path(subtitle_path)?
                 .to_ssa()
                 .to_file(output_subtitle_path),
@@ -105,7 +103,7 @@ impl<'a, P: AsRef<Path>> Compiler<'a, P> {
 
         episode.combine(
             output_subtitle_path,
-            self.context.language,
+            &self.context.language,
             self.context.subtitle_type,
         )?;
 
@@ -127,7 +125,7 @@ impl<'a, P: AsRef<Path>> Compiler<'a, P> {
             "DEBUG:".color_as_warning(),
             episode.episode,
             episode.path,
-            SubtitleFormat::get_episode_subtitle_type(episode, self.context.language)?
+            SubtitleFormat::get_episode_subtitle_type(episode, &self.context.language)?
         );
 
         let mut spinner = create_spinner(&format!(
@@ -135,11 +133,11 @@ impl<'a, P: AsRef<Path>> Compiler<'a, P> {
             episode.title, episode.episode
         ));
 
-        let subtitle_path = episode.get_subtitle_path(self.context.language)?;
+        let subtitle_path = episode.get_subtitle_path(&self.context.language)?;
         let binding = episode.path.join("subtitle.ass");
         let output_subtitle_path = binding.to_str().ok_or("Path is not valid Unicode")?;
 
-        match SubtitleFormat::get_episode_subtitle_type(episode, self.context.language)? {
+        match SubtitleFormat::get_episode_subtitle_type(episode, &self.context.language)? {
             SubtitleFormat::Json => JsonSubtitle::new_from_path(subtitle_path)?
                 .to_ssa()
                 .to_file(output_subtitle_path),
@@ -154,7 +152,7 @@ impl<'a, P: AsRef<Path>> Compiler<'a, P> {
 
         episode.combine(
             output_subtitle_path,
-            self.context.language,
+            &self.context.language,
             self.context.subtitle_type,
         )?;
 

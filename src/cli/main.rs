@@ -9,18 +9,17 @@ use clap::{Parser, Subcommand};
 use compiler::Compiler;
 use lister::Lister;
 use spinners::Spinner;
-use std::path::Path;
 
 mod colorer;
 mod compiler;
 mod lister;
 
-#[derive(Debug, Clone, Copy, Default)]
-pub struct Context<'a, P: AsRef<Path>> {
-    pub language: &'a str,
+#[derive(Debug, Clone, Default)]
+pub struct Context {
+    pub language: String,
     pub subtitle_type: SubtitleType,
-    pub packager: Packager<P>,
-    pub input_path: &'a str,
+    pub packager: Packager,
+    pub input_path: String,
 }
 
 #[derive(Parser)]
@@ -56,7 +55,7 @@ enum SubCommands {
     },
 }
 
-fn list(context: Context<&str>) -> Result<()> {
+fn list(context: Context) -> Result<()> {
     let lister = Lister;
     let download_directory = DownloadFolder::new_from_path(context.input_path)?;
 
@@ -65,9 +64,9 @@ fn list(context: Context<&str>) -> Result<()> {
     Ok(())
 }
 
-fn compile(context: Context<&str>) -> Result<()> {
+fn compile(context: Context) -> Result<()> {
+    let download_directory = DownloadFolder::new_from_path(context.input_path.clone())?;
     let compiler = Compiler::new(context);
-    let download_directory = DownloadFolder::new_from_path(context.input_path)?;
 
     compiler.compile_seasons(&download_directory.seasons)?;
 
@@ -90,7 +89,7 @@ fn main() {
     match cli.subcommand {
         SubCommands::List { input } => {
             let context = Context {
-                input_path: &input,
+                input_path: input,
                 ..Default::default()
             };
 
@@ -112,17 +111,17 @@ fn main() {
             language,
             use_hard_subtitle,
         } => {
-            let context: Context<'_, &str> = Context {
-                language: &language,
+            let context = Context {
+                language,
                 subtitle_type: match use_hard_subtitle {
                     true => SubtitleType::Hard,
                     false => SubtitleType::Soft,
                 },
                 packager: Packager {
-                    output_path: &output,
+                    output_path: output.into(),
                     config: PackagerConfig { copy },
                 },
-                input_path: &input,
+                input_path: input,
             };
 
             #[cfg(debug_assertions)]

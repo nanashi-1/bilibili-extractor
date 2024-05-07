@@ -1,7 +1,7 @@
 use crate::{error::Result, metadata::EpisodeMetadata, subtitle::SubtitleType};
 use std::{
     ffi::OsStr,
-    path::Path,
+    path::{PathBuf},
     process::{Command, ExitStatus},
 };
 
@@ -18,7 +18,7 @@ pub trait Combinable {
     /// Combine the audio, video, and subtitle using `ffmpeg`.
     fn combine(
         &self,
-        subtitle_path: impl AsRef<Path>,
+        subtitle_path: impl Into<PathBuf>,
         subtitle_language: &str,
         subtitle_type: SubtitleType,
     ) -> Result<ExitStatus>;
@@ -27,10 +27,12 @@ pub trait Combinable {
 impl Combinable for EpisodeMetadata {
     fn combine(
         &self,
-        subtitle_path: impl AsRef<Path>,
+        subtitle_path: impl Into<PathBuf>,
         subtitle_language: &str,
         subtitle_type: SubtitleType,
     ) -> Result<ExitStatus> {
+        let subtitle_path: PathBuf = subtitle_path.into();
+
         let video_path = get_file!("video.m4s", episode, self);
         let audio_path = get_file!("audio.m4s", episode, self);
         let output_path = get_file!("episode.mkv", episode, self);
@@ -46,12 +48,12 @@ impl Combinable for EpisodeMetadata {
             SubtitleType::Hard => Ok(binding
                 .args([
                     "-vf",
-                    &format!("subtitles={}", subtitle_path.as_ref().display()),
+                    &format!("subtitles={}", subtitle_path.to_string_lossy()),
                 ])
                 .arg(output_path)
                 .status()?),
             SubtitleType::Soft => Ok(binding
-                .args([OsStr::new("-i"), subtitle_path.as_ref().as_os_str()])
+                .args([OsStr::new("-i"), subtitle_path.as_os_str()])
                 .args(["-map", "0"])
                 .args(["-map", "1:a:0"])
                 .args(["-map", "2"])
