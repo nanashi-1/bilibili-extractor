@@ -6,6 +6,7 @@ description = "Tools to extract and compile bilibili downloads."
 license = "MIT"
 keywords = ["bilibili"]
 authors = ["nanashi-1"]
+repository = "https://github.com/nanashi-1/bilibili-extractor"
 
 [lib]
 name = "bilibili_extractor_lib"
