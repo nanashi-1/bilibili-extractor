@@ -60,7 +60,7 @@ impl Lister {
         #[cfg(not(debug_assertions))]
         episodes
             .iter()
-            .for_each(|e| println!("        {} EP{:0>2}", e.title, e.episode));
+            .for_each(|e| println!("        {} {}", e.title, e.episode.get_full_display()));
 
         #[cfg(debug_assertions)]
         episodes.iter().for_each(|e| {
@@ -77,7 +77,7 @@ impl Lister {
         #[cfg(not(debug_assertions))]
         episodes
             .iter()
-            .for_each(|e| println!("        {} {}", e.title, e.episode_name));
+            .for_each(|e| println!("        {} {}", e.title, e.episode.get_full_display()));
 
         #[cfg(debug_assertions)]
         episodes.iter().for_each(|e| {

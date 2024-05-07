@@ -20,6 +20,7 @@ pub struct Context {
     pub subtitle_type: SubtitleType,
     pub packager: Packager,
     pub input_path: String,
+    pub is_parallel: bool,
 }
 
 #[derive(Parser)]
@@ -52,6 +53,9 @@ enum SubCommands {
 
         #[clap(long, help = "Set language for the subtitle.")]
         use_hard_subtitle: bool,
+
+        #[clap(long, short, help = "Compile episodes in parallel.")]
+        parallel: bool,
     },
 }
 
@@ -110,6 +114,7 @@ fn main() {
             copy,
             language,
             use_hard_subtitle,
+            parallel,
         } => {
             let context = Context {
                 language,
@@ -122,6 +127,7 @@ fn main() {
                     config: PackagerConfig { copy },
                 },
                 input_path: input,
+                is_parallel: parallel,
             };
 
             #[cfg(debug_assertions)]
