@@ -2,9 +2,7 @@ use crate::colorer::Colorer;
 use crate::{create_spinner, Context};
 use bilibili_extractor_lib::combiner::Combinable;
 use bilibili_extractor_lib::error::Result;
-use bilibili_extractor_lib::metadata::{
-    NormalEpisodeMetadata, SeasonMetadata, SpecialEpisodeMetadata,
-};
+use bilibili_extractor_lib::metadata::{EpisodeId, EpisodeMetadata, SeasonMetadata};
 use bilibili_extractor_lib::subtitle::{JsonSubtitle, SubtitleFormat};
 use rsubs_lib::srt::SRTFile;
 use rsubs_lib::vtt::VTTFile;
@@ -22,34 +20,42 @@ impl<'a, P: AsRef<Path>> Compiler<'a, P> {
         Self { context }
     }
 
-    pub fn compile_seasons(&self, seasons: &[SeasonMetadata<impl AsRef<Path>>]) -> Result<()> {
+    pub fn compile_seasons(&self, seasons: &[SeasonMetadata]) -> Result<()> {
         seasons.iter().try_for_each(|s| self.compile_season(s))?;
 
         Ok(())
     }
 
-    pub fn compile_season(&self, season_metadata: &SeasonMetadata<impl AsRef<Path>>) -> Result<()> {
+    pub fn compile_season(&self, season_metadata: &SeasonMetadata) -> Result<()> {
         #[cfg(debug_assertions)]
         println!(
             "{} Season Name: {:?}, Season Path: {:?}, Episode Count: {:?}\n",
             "DEBUG:".color_as_warning(),
             season_metadata.title,
-            season_metadata.path.as_ref().unwrap().as_ref(),
-            season_metadata.normal_episodes.len() + season_metadata.special_episodes.len()
+            season_metadata.path,
+            season_metadata.episodes.len()
         );
 
-        self.compile_normal_episodes(&season_metadata.normal_episodes)?;
-        self.compile_special_episodes(&season_metadata.special_episodes)?;
+        let normal_episodes: Vec<&EpisodeMetadata> = season_metadata
+            .episodes
+            .iter()
+            .filter(|e| matches!(e.episode, EpisodeId::Normal(_)))
+            .collect();
+        let special_episodes: Vec<&EpisodeMetadata> = season_metadata
+            .episodes
+            .iter()
+            .filter(|e| matches!(e.episode, EpisodeId::Special(_)))
+            .collect();
+
+        self.compile_normal_episodes(normal_episodes)?;
+        self.compile_special_episodes(special_episodes)?;
 
         self.context.packager.save_season(season_metadata)?;
 
         Ok(())
     }
 
-    pub fn compile_normal_episodes(
-        &self,
-        episodes: &[NormalEpisodeMetadata<impl AsRef<Path>>],
-    ) -> Result<()> {
+    pub fn compile_normal_episodes(&self, episodes: Vec<&EpisodeMetadata>) -> Result<()> {
         episodes
             .iter()
             .try_for_each(|e| self.compile_normal_episode(e))?;
@@ -57,10 +63,7 @@ impl<'a, P: AsRef<Path>> Compiler<'a, P> {
         Ok(())
     }
 
-    pub fn compile_special_episodes(
-        &self,
-        episodes: &[SpecialEpisodeMetadata<impl AsRef<Path>>],
-    ) -> Result<()> {
+    pub fn compile_special_episodes(&self, episodes: Vec<&EpisodeMetadata>) -> Result<()> {
         episodes
             .iter()
             .try_for_each(|e| self.compile_special_episode(e))?;
@@ -68,17 +71,14 @@ impl<'a, P: AsRef<Path>> Compiler<'a, P> {
         Ok(())
     }
 
-    pub fn compile_normal_episode(
-        &self,
-        episode: &NormalEpisodeMetadata<impl AsRef<Path>>,
-    ) -> Result<()> {
+    pub fn compile_normal_episode(&self, episode: &EpisodeMetadata) -> Result<()> {
         #[cfg(debug_assertions)]
         println!(
             "{} Episode Type: \"Normal\", Episode: {:?}, Episode Path: {:?}, Subtitle Format: \"{:?}\"",
             "DEBUG:".color_as_warning(),
             episode.episode,
-            episode.path.as_ref().unwrap().as_ref(),
-            SubtitleFormat::get_normal_episode_subtitle_type(episode, self.context.language)?
+            episode.path,
+            SubtitleFormat::get_episode_subtitle_type(episode, self.context.language)?
         );
 
         let mut spinner = create_spinner(&format!(
@@ -87,10 +87,10 @@ impl<'a, P: AsRef<Path>> Compiler<'a, P> {
         ));
 
         let subtitle_path = episode.get_subtitle_path(self.context.language)?;
-        let binding = episode.path.as_ref().unwrap().as_ref().join("subtitle.ass");
+        let binding = episode.path.join("subtitle.ass");
         let output_subtitle_path = binding.to_str().ok_or("Path is not valid Unicode")?;
 
-        match SubtitleFormat::get_normal_episode_subtitle_type(episode, self.context.language)? {
+        match SubtitleFormat::get_episode_subtitle_type(episode, self.context.language)? {
             SubtitleFormat::Json => JsonSubtitle::new_from_path(subtitle_path)?
                 .to_ssa()
                 .to_file(output_subtitle_path),
@@ -120,29 +120,26 @@ impl<'a, P: AsRef<Path>> Compiler<'a, P> {
         Ok(())
     }
 
-    pub fn compile_special_episode(
-        &self,
-        episode: &SpecialEpisodeMetadata<impl AsRef<Path>>,
-    ) -> Result<()> {
+    pub fn compile_special_episode(&self, episode: &EpisodeMetadata) -> Result<()> {
         #[cfg(debug_assertions)]
         println!(
             "{} Episode Type: \"Special\", Episode Name: {:?}, Episode Path: {:?}, Subtitle Format: \"{:?}\"",
             "DEBUG:".color_as_warning(),
-            episode.episode_name,
-            episode.path.as_ref().unwrap().as_ref(),
-            SubtitleFormat::get_special_episode_subtitle_type(episode, self.context.language)?
+            episode.episode,
+            episode.path,
+            SubtitleFormat::get_episode_subtitle_type(episode, self.context.language)?
         );
 
         let mut spinner = create_spinner(&format!(
             "Compiling {} {}...",
-            episode.title, episode.episode_name
+            episode.title, episode.episode
         ));
 
         let subtitle_path = episode.get_subtitle_path(self.context.language)?;
-        let binding = episode.path.as_ref().unwrap().as_ref().join("subtitle.ass");
+        let binding = episode.path.join("subtitle.ass");
         let output_subtitle_path = binding.to_str().ok_or("Path is not valid Unicode")?;
 
-        match SubtitleFormat::get_special_episode_subtitle_type(episode, self.context.language)? {
+        match SubtitleFormat::get_episode_subtitle_type(episode, self.context.language)? {
             SubtitleFormat::Json => JsonSubtitle::new_from_path(subtitle_path)?
                 .to_ssa()
                 .to_file(output_subtitle_path),
@@ -163,7 +160,7 @@ impl<'a, P: AsRef<Path>> Compiler<'a, P> {
 
         spinner.stop_and_persist(
             &"✔".color_as_success(),
-            format!("Compiled {} {}!", episode.title, episode.episode_name).color_as_success(),
+            format!("Compiled {} {}!", episode.title, episode.episode).color_as_success(),
         );
 
         #[cfg(debug_assertions)]

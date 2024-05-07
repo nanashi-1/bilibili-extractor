@@ -1,13 +1,12 @@
 use crate::colorer::Colorer;
-use bilibili_extractor_lib::metadata::{
-    NormalEpisodeMetadata, SeasonMetadata, SpecialEpisodeMetadata,
-};
-use std::{convert::AsRef, path::Path};
+use bilibili_extractor_lib::metadata::EpisodeId;
+use bilibili_extractor_lib::metadata::EpisodeMetadata;
+use bilibili_extractor_lib::metadata::SeasonMetadata;
 
 pub struct Lister;
 
 impl Lister {
-    pub fn list_seasons(&self, seasons: &[SeasonMetadata<impl AsRef<Path>>]) {
+    pub fn list_seasons(&self, seasons: &[SeasonMetadata]) {
         seasons.iter().enumerate().for_each(|(i, s)| {
             println!(
                 "{} {}",
@@ -17,39 +16,47 @@ impl Lister {
 
             #[cfg(debug_assertions)]
             {
-                println!(
-                    "    {} {:?}",
-                    "Path:".color_as_success(),
-                    s.path.as_ref().unwrap().as_ref()
-                );
+                println!("    {} {:?}", "Path:".color_as_success(), s.path);
                 println!(
                     "    {} {:?}",
                     "Episode Count:".color_as_success(),
-                    s.normal_episodes.len() + s.special_episodes.len()
+                    s.episodes.len()
                 );
             }
 
-            match (s.normal_episodes.is_empty(), s.special_episodes.is_empty()) {
+            let normal_episodes: Vec<_> = s
+                .episodes
+                .iter()
+                .filter(|e| matches!(e.episode, EpisodeId::Normal(_)))
+                .collect();
+
+            let special_episodes: Vec<_> = s
+                .episodes
+                .iter()
+                .filter(|e| matches!(e.episode, EpisodeId::Special(_)))
+                .collect();
+
+            match (normal_episodes.is_empty(), special_episodes.is_empty()) {
                 (true, true) => println!("{}", "    No Episodes!!".color_as_error()),
                 (false, true) => {
                     println!("{}", "    Episodes:".color_as_success());
-                    self.list_normal_episodes(&s.normal_episodes);
+                    self.list_normal_episodes(normal_episodes);
                 }
                 (true, false) => {
                     println!("{}", "    Episodes:".color_as_success());
-                    self.list_special_episodes(&s.special_episodes);
+                    self.list_special_episodes(special_episodes);
                 }
                 _ => {
                     println!("{}", "    Normal Episodes:\n".color_as_success());
-                    self.list_normal_episodes(&s.normal_episodes);
+                    self.list_normal_episodes(normal_episodes);
                     println!("{}", "    Special Episodes:\n".color_as_success());
-                    self.list_special_episodes(&s.special_episodes);
+                    self.list_special_episodes(special_episodes);
                 }
             }
         })
     }
 
-    pub fn list_normal_episodes(&self, episodes: &[NormalEpisodeMetadata<impl AsRef<Path>>]) {
+    pub fn list_normal_episodes(&self, episodes: Vec<&EpisodeMetadata>) {
         #[cfg(not(debug_assertions))]
         episodes
             .iter()
@@ -58,15 +65,15 @@ impl Lister {
         #[cfg(debug_assertions)]
         episodes.iter().for_each(|e| {
             println!(
-                "        {} EP{:0>2}, Path: {:?}",
+                "        {} {}, Path: {:?}",
                 e.title,
-                e.episode,
-                e.path.as_ref().unwrap().as_ref()
+                e.episode.get_full_display(),
+                e.path
             )
         });
     }
 
-    pub fn list_special_episodes(&self, episodes: &[SpecialEpisodeMetadata<impl AsRef<Path>>]) {
+    pub fn list_special_episodes(&self, episodes: Vec<&EpisodeMetadata>) {
         #[cfg(not(debug_assertions))]
         episodes
             .iter()
@@ -77,8 +84,8 @@ impl Lister {
             println!(
                 "        {} {}, Path: {:?}",
                 e.title,
-                e.episode_name,
-                e.path.as_ref().unwrap().as_ref()
+                e.episode.get_full_display(),
+                e.path
             )
         });
     }
