@@ -4,6 +4,7 @@ use bilibili_extractor_lib::combiner::Combinable;
 use bilibili_extractor_lib::error::Result;
 use bilibili_extractor_lib::metadata::{EpisodeId, EpisodeMetadata, SeasonMetadata};
 use bilibili_extractor_lib::subtitle::{JsonSubtitle, SubtitleFormat};
+use rayon::iter::{IntoParallelRefIterator, ParallelIterator};
 use rsubs_lib::srt::SRTFile;
 use rsubs_lib::vtt::VTTFile;
 use std::fs::{read_to_string, rename};
@@ -54,17 +55,27 @@ impl Compiler {
     }
 
     pub fn compile_normal_episodes(&self, episodes: Vec<&EpisodeMetadata>) -> Result<()> {
-        episodes
-            .iter()
-            .try_for_each(|e| self.compile_normal_episode(e))?;
+        match self.context.is_parallel {
+            true => episodes
+                .par_iter()
+                .try_for_each(|e| self.compile_normal_episode(e))?,
+            false => episodes
+                .iter()
+                .try_for_each(|e| self.compile_normal_episode(e))?,
+        };
 
         Ok(())
     }
 
     pub fn compile_special_episodes(&self, episodes: Vec<&EpisodeMetadata>) -> Result<()> {
-        episodes
-            .iter()
-            .try_for_each(|e| self.compile_special_episode(e))?;
+        match self.context.is_parallel {
+            true => episodes
+                .par_iter()
+                .try_for_each(|e| self.compile_special_episode(e))?,
+            false => episodes
+                .iter()
+                .try_for_each(|e| self.compile_special_episode(e))?,
+        };
 
         Ok(())
     }
@@ -79,10 +90,13 @@ impl Compiler {
             SubtitleFormat::get_episode_subtitle_type(episode, &self.context.language)?
         );
 
-        let mut spinner = create_spinner(&format!(
-            "Compiling {} EP{:0>2}...",
-            episode.title, episode.episode
-        ));
+        let mut spinner = match self.context.is_parallel {
+            true => create_spinner("Compiling episodes in parallel..."),
+            false => create_spinner(&format!(
+                "Compiling {} EP{:0>2}...",
+                episode.title, episode.episode
+            )),
+        };
 
         let subtitle_path = episode.get_subtitle_path(&self.context.language)?;
         let binding = episode.path.join("subtitle.ass");
@@ -128,10 +142,10 @@ impl Compiler {
             SubtitleFormat::get_episode_subtitle_type(episode, &self.context.language)?
         );
 
-        let mut spinner = create_spinner(&format!(
-            "Compiling {} {}...",
-            episode.title, episode.episode
-        ));
+        let mut spinner = match self.context.is_parallel {
+            true => create_spinner("Compiling episodes in parallel..."),
+            false => create_spinner(&format!("Compiling {} {}", episode.title, episode.episode)),
+        };
 
         let subtitle_path = episode.get_subtitle_path(&self.context.language)?;
         let binding = episode.path.join("subtitle.ass");
