@@ -1,5 +1,5 @@
 use crate::{
-    error::{Error, Result},
+    error::{Result},
     metadata::EpisodeMetadata,
 };
 use rsubs_lib::{
