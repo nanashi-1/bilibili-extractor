@@ -101,9 +101,9 @@ fn main() {
                 context
             );
 
-            if let Err(e) = list(context) {
-                println!("{}", e.to_string().color_as_error())
-            }
+            list(context)
+                .map_err(|e| e.to_string().color_as_error())
+                .unwrap();
         }
         SubCommands::Compile {
             input,
@@ -132,9 +132,9 @@ fn main() {
                 context
             );
 
-            if let Err(e) = compile(context) {
-                println!("{}", e.to_string().color_as_error())
-            }
+            compile(context)
+                .map_err(|e| e.to_string().color_as_error())
+                .unwrap();
         }
     }
 }
