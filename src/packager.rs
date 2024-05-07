@@ -1,6 +1,6 @@
 use crate::{
     error::Result,
-    metadata::{NormalEpisodeMetadata, SeasonMetadata, SpecialEpisodeMetadata},
+    metadata::{EpisodeId, EpisodeMetadata, SeasonMetadata},
 };
 use serde::{Deserialize, Serialize};
 use std::{
@@ -29,7 +29,7 @@ macro_rules! package_epidode_by_copying {
         package_episode!(
             copy,
             episode,
-            "{} EP{:0>2}.mkv",
+            "{} EP{}.mkv",
             $episode_metadata,
             $episode_video_path,
             $packager
@@ -39,7 +39,7 @@ macro_rules! package_epidode_by_copying {
     (special, $episode_metadata: expr, $episode_video_path: expr, $packager: expr) => {
         package_episode!(
             copy,
-            episode_name,
+            episode,
             "{} {}.mkv",
             $episode_metadata,
             $episode_video_path,
@@ -53,7 +53,7 @@ macro_rules! package_epidode_by_moving {
         package_episode!(
             rename,
             episode,
-            "{} EP{:0>2}.mkv",
+            "{} EP{}.mkv",
             $episode_metadata,
             $episode_video_path,
             $packager
@@ -63,7 +63,7 @@ macro_rules! package_epidode_by_moving {
     (special, $episode_metadata: expr, $episode_video_path: expr, $packager: expr) => {
         package_episode!(
             rename,
-            episode_name,
+            episode,
             "{} {}.mkv",
             $episode_metadata,
             $episode_video_path,
@@ -76,12 +76,6 @@ macro_rules! get_episode_video_path {
     ($episode_ident: ident, $episode_metadata: expr) => {
         $episode_metadata
             .path
-            .as_ref()
-            .ok_or(format!(
-                "Episode {} of {} doesn't have a path.",
-                $episode_metadata.$episode_ident, $episode_metadata.title
-            ))?
-            .as_ref()
             .join(&$episode_metadata.type_tag)
             .join("episode.mkv")
     };
@@ -117,49 +111,38 @@ impl<P: AsRef<Path>> Packager<P> {
     }
 
     /// Package a season.
-    pub fn save_season(&self, season_metadata: &SeasonMetadata<impl AsRef<Path>>) -> Result<()> {
+    pub fn save_season(&self, season_metadata: &SeasonMetadata) -> Result<()> {
         season_metadata
-            .normal_episodes
+            .episodes
             .iter()
-            .try_for_each(|e| self.save_normal_episode(e))?;
-
-        season_metadata
-            .special_episodes
-            .iter()
-            .try_for_each(|e| self.save_special_episode(e))?;
+            .try_for_each(|e| self.save_episode(e))?;
 
         Ok(())
     }
 
-    /// Package a normal episode.
-    pub fn save_normal_episode(
-        &self,
-        episode_metadata: &NormalEpisodeMetadata<impl AsRef<Path>>,
-    ) -> Result<()> {
+    /// Package episode.
+    pub fn save_episode(&self, episode_metadata: &EpisodeMetadata) -> Result<()> {
         let episode_video_path = get_episode_video_path!(episode, episode_metadata);
         create_dir_all(self.output_path.as_ref().join(&episode_metadata.title))?;
 
         if self.config.copy {
-            package_epidode_by_copying!(normal, episode_metadata, episode_video_path, self);
+            match episode_metadata.episode {
+                EpisodeId::Normal(_) => {
+                    package_epidode_by_copying!(normal, episode_metadata, episode_video_path, self)
+                }
+                EpisodeId::Special(_) => {
+                    package_epidode_by_copying!(special, episode_metadata, episode_video_path, self)
+                }
+            };
         } else {
-            package_epidode_by_moving!(normal, episode_metadata, episode_video_path, self);
-        }
-
-        Ok(())
-    }
-
-    /// Package a special episode.
-    pub fn save_special_episode(
-        &self,
-        episode_metadata: &SpecialEpisodeMetadata<impl AsRef<Path>>,
-    ) -> Result<()> {
-        let episode_video_path = get_episode_video_path!(episode_name, episode_metadata);
-        create_dir_all(self.output_path.as_ref().join(&episode_metadata.title))?;
-
-        if self.config.copy {
-            package_epidode_by_copying!(special, episode_metadata, episode_video_path, self);
-        } else {
-            package_epidode_by_moving!(special, episode_metadata, episode_video_path, self);
+            match episode_metadata.episode {
+                EpisodeId::Normal(_) => {
+                    package_epidode_by_moving!(normal, episode_metadata, episode_video_path, self)
+                }
+                EpisodeId::Special(_) => {
+                    package_epidode_by_moving!(special, episode_metadata, episode_video_path, self)
+                }
+            };
         }
 
         Ok(())

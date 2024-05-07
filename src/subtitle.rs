@@ -1,6 +1,6 @@
 use crate::{
     error::{Error, Result},
-    metadata::{EpisodeMetadata, NormalEpisodeMetadata, SpecialEpisodeMetadata},
+    metadata::EpisodeMetadata,
 };
 use rsubs_lib::{
     srt::{SRTFile, SRTLine},
@@ -115,51 +115,9 @@ pub enum SubtitleFormat {
 
 impl JsonSubtitle {
     /// Fetch the json subtitle of an episode.
-    pub fn new_from_episode(
-        episode: &EpisodeMetadata<impl AsRef<Path>>,
-        subtitle_language: &str,
-    ) -> Result<Self> {
-        match episode {
-            EpisodeMetadata::Normal(e) => Self::new_from_normal_episode(e, subtitle_language),
-            EpisodeMetadata::Special(e) => Self::new_from_special_episode(e, subtitle_language),
-        }
-    }
-
-    /// Fetch the json subtitle of a normal episode.
-    pub fn new_from_normal_episode(
-        episode: &NormalEpisodeMetadata<impl AsRef<Path>>,
-        subtitle_language: &str,
-    ) -> Result<Self> {
+    pub fn new_from_episode(episode: &EpisodeMetadata, subtitle_language: &str) -> Result<Self> {
         let subtitle_path = episode
             .path
-            .as_ref()
-            .ok_or(format!(
-                "Episode {} of {} doesn't have a path.",
-                episode.episode, episode.title
-            ))?
-            .as_ref()
-            .join(subtitle_language)
-            .read_dir()?
-            .next()
-            .ok_or("Subtitle directory is empty.")??
-            .path();
-
-        Self::new_from_path(subtitle_path)
-    }
-
-    /// Fetch the json subtitle of a special episode.
-    pub fn new_from_special_episode(
-        episode: &SpecialEpisodeMetadata<impl AsRef<Path>>,
-        subtitle_language: &str,
-    ) -> Result<Self> {
-        let subtitle_path = episode
-            .path
-            .as_ref()
-            .ok_or(format!(
-                "{} of {} doesn't have a path.",
-                episode.episode_name, episode.title
-            ))?
-            .as_ref()
             .join(subtitle_language)
             .read_dir()?
             .next()
@@ -284,32 +242,11 @@ impl From<JsonSubtitle> for VTTFile {
 impl SubtitleFormat {
     /// Get the subtitle format of an episode.
     pub fn get_episode_subtitle_type(
-        episode: &EpisodeMetadata<impl AsRef<Path>>,
-        subtitle_language: &str,
-    ) -> Result<Self> {
-        match episode {
-            EpisodeMetadata::Normal(e) => {
-                Self::get_normal_episode_subtitle_type(e, subtitle_language)
-            }
-            EpisodeMetadata::Special(e) => {
-                Self::get_special_episode_subtitle_type(e, subtitle_language)
-            }
-        }
-    }
-
-    /// Get the subtitle format of a normal episode.
-    pub fn get_normal_episode_subtitle_type(
-        episode: &NormalEpisodeMetadata<impl AsRef<Path>>,
+        episode: &EpisodeMetadata,
         subtitle_language: &str,
     ) -> Result<Self> {
         let subtitle_path = episode
             .path
-            .as_ref()
-            .ok_or(format!(
-                "Episode {} of {} doesn't have a path.",
-                episode.episode, episode.title
-            ))?
-            .as_ref()
             .join(subtitle_language)
             .read_dir()?
             .next()
@@ -328,48 +265,7 @@ impl SubtitleFormat {
             "ass" | "ssa" => Ok(Self::Ssa),
             "srt" => Ok(Self::Srt),
             "vtt" => Ok(Self::Vtt),
-            _ => Err(Error::FromString(format!(
-                "Invalid extension: {}",
-                subtitle_path.display()
-            ))),
-        }
-    }
-
-    /// Get the subtitle format of a special episode.
-    pub fn get_special_episode_subtitle_type(
-        episode: &SpecialEpisodeMetadata<impl AsRef<Path>>,
-        subtitle_language: &str,
-    ) -> Result<Self> {
-        let subtitle_path = episode
-            .path
-            .as_ref()
-            .ok_or(format!(
-                "{} of {} doesn't have a path.",
-                episode.episode_name, episode.title
-            ))?
-            .as_ref()
-            .join(subtitle_language)
-            .read_dir()?
-            .next()
-            .ok_or("Subtitle directory is empty.")??
-            .path();
-        let extension = subtitle_path.extension().ok_or(format!(
-            "Subtitle {} has no extension.",
-            subtitle_path.display()
-        ))?;
-
-        match extension
-            .to_str()
-            .ok_or("OsStr doesn't yeild valid Unicode.")?
-        {
-            "json" => Ok(Self::Json),
-            "ass" | "ssa" => Ok(Self::Ssa),
-            "srt" => Ok(Self::Srt),
-            "vtt" => Ok(Self::Vtt),
-            _ => Err(Error::FromString(format!(
-                "Invalid extension: {}",
-                subtitle_path.display()
-            ))),
+            _ => Err(format!("Invalid extension: {}", extension.to_string_lossy()).into()),
         }
     }
 }
